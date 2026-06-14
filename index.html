@@ -164,8 +164,8 @@
 
       <div class="gap__layout">
         <!-- Dashboard vs. insight (consumer framing) -->
-        <div class="contrast reveal" data-reveal aria-label="What your dashboard shows versus what we tell you">
-          <div class="contrast__card contrast__card--dash">
+        <div class="contrast" aria-label="What your dashboard shows versus what we tell you">
+          <div class="contrast__card contrast__card--dash reveal" data-reveal>
             <span class="contrast__tag">What your dashboard shows</span>
             <p class="contrast__metric">Blinkit sales dropped <span class="down">▼ 12%</span> last week.</p>
             <div class="contrast__spark" aria-hidden="true">
@@ -175,9 +175,9 @@
             <p class="contrast__note">It can't tell you <em>why</em> — or what to do about it.</p>
           </div>
 
-          <div class="contrast__arrow" aria-hidden="true">↓</div>
+          <div class="contrast__flow reveal" data-reveal data-delay="1" aria-hidden="true"><span></span></div>
 
-          <div class="contrast__card contrast__card--us">
+          <div class="contrast__card contrast__card--us reveal" data-reveal data-delay="2">
             <span class="contrast__tag contrast__tag--us">What we tell you</span>
             <p class="contrast__metric">Most of that “drop” was last week's promo <strong>pulling sales forward</strong> — real demand held steady.</p>
             <p class="contrast__decision">→ Don't deepen the discount. You'd be paying for sales you'd get anyway.</p>
@@ -256,6 +256,31 @@
 
     <!-- ===== THE EDGE ===== -->
     <section class="section section--dark edge" id="edge">
+      <svg class="panel-fx" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g class="fx-links">
+          <line x1="140" y1="130" x2="360" y2="90"/><line x1="360" y1="90" x2="540" y2="210"/>
+          <line x1="280" y1="310" x2="540" y2="210"/><line x1="540" y1="210" x2="720" y2="120"/>
+          <line x1="720" y1="120" x2="920" y2="300"/><line x1="660" y1="430" x2="920" y2="300"/>
+          <line x1="920" y1="300" x2="1080" y2="150"/><line x1="920" y1="300" x2="1010" y2="470"/>
+          <line x1="280" y1="310" x2="220" y2="500"/><line x1="360" y1="90" x2="280" y2="310"/>
+          <line x1="660" y1="430" x2="840" y2="470"/><line x1="840" y1="470" x2="1010" y2="470"/>
+          <line x1="540" y1="210" x2="660" y2="430"/>
+        </g>
+        <g class="fx-flows">
+          <line class="flow f1" x1="360" y1="90" x2="540" y2="210"/>
+          <line class="flow f2" x1="540" y1="210" x2="720" y2="120"/>
+          <line class="flow f3" x1="720" y1="120" x2="920" y2="300"/>
+          <line class="flow f4" x1="920" y1="300" x2="1010" y2="470"/>
+        </g>
+        <g class="fx-nodes">
+          <circle cx="140" cy="130" r="2.5"/><circle class="pulse p1" cx="360" cy="90" r="3"/>
+          <circle cx="280" cy="310" r="2.5"/><circle class="pulse p2" cx="540" cy="210" r="3.5"/>
+          <circle cx="720" cy="120" r="2.5"/><circle cx="660" cy="430" r="2.5"/>
+          <circle class="pulse p3" cx="920" cy="300" r="3.5"/><circle cx="1080" cy="150" r="2.5"/>
+          <circle class="pulse p4" cx="1010" cy="470" r="3"/><circle cx="220" cy="500" r="2.5"/>
+          <circle cx="840" cy="470" r="2.5"/>
+        </g>
+      </svg>
       <div class="edge__grid">
         <div class="edge__left">
           <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>Why us</p>
@@ -356,9 +381,7 @@
       <div class="plans">
         <article class="plan reveal" data-reveal>
           <p class="plan__name">Promo Leak Audit</p>
-          <p class="plan__tagline">Start here — one audit, one number</p>
-          <p class="plan__price"><span class="quote">Pricing on a call</span></p>
-          <p class="plan__founding">One-off project · founding-partner spots for the first 5 brands</p>
+          <p class="plan__tagline">Start here — one audit, one number</p>          <p class="plan__founding">One-off project · founding-partner spots for the first 5 brands</p>
           <ul class="plan__list">
             <li>Last 2 quarters of promos, up to 2 platforms &amp; 10 SKUs</li>
             <li>Baseline-uplift decomposition + pantry-loading + cannibalization check</li>
@@ -372,9 +395,7 @@
         <article class="plan plan--feature reveal" data-reveal data-delay="1">
           <span class="plan__badge">Most popular</span>
           <p class="plan__name">Evidence Engine Retainer</p>
-          <p class="plan__tagline">One causal question, answered every month</p>
-          <p class="plan__price"><span class="quote">Pricing on a call</span></p>
-          <p class="plan__founding">Monthly · scoped to your brand's size</p>
+          <p class="plan__tagline">One causal question, answered every month</p>          <p class="plan__founding">Monthly · scoped to your brand's size</p>
           <ul class="plan__list">
             <li>One causal question answered rigorously each month</li>
             <li>Quarterly geo-experiment design (city-holdout tests)</li>
@@ -387,9 +408,7 @@
 
         <article class="plan reveal" data-reveal data-delay="2">
           <p class="plan__name">Geo-Experiment Program</p>
-          <p class="plan__tagline">The causal gold standard</p>
-          <p class="plan__price"><span class="quote">Pricing on a call</span></p>
-          <p class="plan__founding">Per quarter · add-on for retainer clients</p>
+          <p class="plan__tagline">The causal gold standard</p>          <p class="plan__founding">Per quarter · add-on for retainer clients</p>
           <ul class="plan__list">
             <li>Designed &amp; measured city-holdout experiments</li>
             <li>True causal lift — not modelled, observed</li>
@@ -410,6 +429,31 @@
     <!-- ===== CONTACT / CTA ===== -->
     <section class="section contact" id="contact">
       <div class="contact__inner reveal" data-reveal>
+        <svg class="panel-fx" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="fx-links">
+            <line x1="140" y1="130" x2="360" y2="90"/><line x1="360" y1="90" x2="540" y2="210"/>
+            <line x1="280" y1="310" x2="540" y2="210"/><line x1="540" y1="210" x2="720" y2="120"/>
+            <line x1="720" y1="120" x2="920" y2="300"/><line x1="660" y1="430" x2="920" y2="300"/>
+            <line x1="920" y1="300" x2="1080" y2="150"/><line x1="920" y1="300" x2="1010" y2="470"/>
+            <line x1="280" y1="310" x2="220" y2="500"/><line x1="360" y1="90" x2="280" y2="310"/>
+            <line x1="660" y1="430" x2="840" y2="470"/><line x1="840" y1="470" x2="1010" y2="470"/>
+            <line x1="540" y1="210" x2="660" y2="430"/>
+          </g>
+          <g class="fx-flows">
+            <line class="flow f1" x1="360" y1="90" x2="540" y2="210"/>
+            <line class="flow f2" x1="540" y1="210" x2="720" y2="120"/>
+            <line class="flow f3" x1="720" y1="120" x2="920" y2="300"/>
+            <line class="flow f4" x1="920" y1="300" x2="1010" y2="470"/>
+          </g>
+          <g class="fx-nodes">
+            <circle cx="140" cy="130" r="2.5"/><circle class="pulse p1" cx="360" cy="90" r="3"/>
+            <circle cx="280" cy="310" r="2.5"/><circle class="pulse p2" cx="540" cy="210" r="3.5"/>
+            <circle cx="720" cy="120" r="2.5"/><circle cx="660" cy="430" r="2.5"/>
+            <circle class="pulse p3" cx="920" cy="300" r="3.5"/><circle cx="1080" cy="150" r="2.5"/>
+            <circle class="pulse p4" cx="1010" cy="470" r="3"/><circle cx="220" cy="500" r="2.5"/>
+            <circle cx="840" cy="470" r="2.5"/>
+          </g>
+        </svg>
         <h2 class="contact__title">
           Find the lakhs you're<br /><em>silently burning.</em>
         </h2>
