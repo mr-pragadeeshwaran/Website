@@ -1,78 +1,111 @@
 /* =========================================================
-   Causal Insight Agency — interactions
-   Reveal engine is scroll-based (works everywhere) with
-   guaranteed fallbacks so content is never left hidden.
+   Causal Insight — Discount Optimizer site interactions
+   Reveal engine: IntersectionObserver with scroll fallback and
+   a safety net so content is never left hidden.
    ========================================================= */
 (function () {
   "use strict";
 
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   /* ---------- year ---------- */
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* ---------- collect animated nodes ---------- */
-  const revealEls = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
-  const counters = Array.prototype.slice.call(document.querySelectorAll(".num[data-count]"));
-  const gapLayout = document.querySelector(".gap__layout");
-
-  /* ---------- nav: scrolled state + progress bar ---------- */
+  /* ---------- nav refs ---------- */
   const nav = document.getElementById("nav");
   const progressBar = document.getElementById("progressBar");
 
-  /* ---------- counter animation ---------- */
+  /* ---------- counter animation (supports decimals) ---------- */
+  function finalText(el) {
+    const target = parseFloat(el.getAttribute("data-count"));
+    const decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+    const prefix = el.getAttribute("data-prefix") || "";
+    const suffix = el.getAttribute("data-suffix") || "";
+    return prefix + target.toFixed(decimals) + suffix;
+  }
   function animateCount(el) {
     if (el.dataset.counted) return;
     el.dataset.counted = "1";
     const target = parseFloat(el.getAttribute("data-count"));
+    const decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
     const prefix = el.getAttribute("data-prefix") || "";
     const suffix = el.getAttribute("data-suffix") || "";
 
-    if (prefersReduced) { el.textContent = prefix + target + suffix; return; }
+    if (prefersReduced) { el.textContent = finalText(el); return; }
 
-    const dur = 1400;
+    const dur = 1500;
     const start = performance.now();
     function frame(now) {
       const p = Math.min((now - start) / dur, 1);
       const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
-      el.textContent = prefix + Math.round(target * eased) + suffix;
+      el.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
       if (p < 1) requestAnimationFrame(frame);
-      else el.textContent = prefix + target + suffix;
+      else el.textContent = finalText(el);
     }
     requestAnimationFrame(frame);
   }
 
-  /* ---------- the reveal engine ---------- */
-  let matrixDone = false;
-  function inViewport(el, ratioFromBottom) {
-    const r = el.getBoundingClientRect();
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    return r.top < vh * ratioFromBottom && r.bottom > 0;
+  /* ---------- reveal engine ---------- */
+  function revealEl(el) {
+    el.classList.add("is-visible");
+    // after the entrance settles, drop the stagger delay so hover feels immediate
+    setTimeout(function () { el.classList.add("is-rested"); }, 1600);
+    const donut = el.querySelector ? el.querySelector(".donut") : null;
+    if (donut) donut.classList.add("in-view");
   }
 
-  function checkReveals() {
-    for (let i = revealEls.length - 1; i >= 0; i--) {
-      const el = revealEls[i];
-      if (inViewport(el, 0.92)) {
-        el.classList.add("is-visible");
-        revealEls.splice(i, 1);
-      }
-    }
-    for (let i = counters.length - 1; i >= 0; i--) {
-      const el = counters[i];
-      if (inViewport(el, 0.85)) {
-        animateCount(el);
-        counters.splice(i, 1);
-      }
-    }
-    if (!matrixDone && gapLayout && inViewport(gapLayout, 0.75)) {
-      gapLayout.classList.add("in-view");
-      matrixDone = true;
-    }
+  const revealEls = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+  const counters = Array.prototype.slice.call(document.querySelectorAll(".num[data-count]"));
+
+  if (prefersReduced) {
+    revealEls.forEach(revealEl);
+    counters.forEach(animateCount);
+  } else if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        revealEl(entry.target);
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    revealEls.forEach(function (el) { io.observe(el); });
+
+    const ioNum = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        animateCount(entry.target);
+        ioNum.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.2 });
+    counters.forEach(function (el) { ioNum.observe(el); });
+  } else {
+    // very old browsers: show everything
+    revealEls.forEach(revealEl);
+    counters.forEach(animateCount);
   }
 
-  /* ---------- scroll handler (rAF-throttled) ---------- */
+  // safety net: nothing at or above the viewport stays hidden past 3.5s.
+  // Below-fold content is left to the observer so scroll reveals still play.
+  function aboveFold(el) {
+    return el.getBoundingClientRect().top < (window.innerHeight || 800) * 1.05;
+  }
+  setTimeout(function () {
+    document.querySelectorAll("[data-reveal]:not(.is-visible)").forEach(function (el) {
+      if (aboveFold(el)) revealEl(el);
+    });
+    document.querySelectorAll(".num[data-count]").forEach(function (el) {
+      if (!el.dataset.counted && aboveFold(el)) { el.dataset.counted = "1"; el.textContent = finalText(el); }
+    });
+  }, 3500);
+
+  /* ---------- scroll: nav state, progress, scrollspy ---------- */
+  const spyLinks = Array.prototype.slice.call(document.querySelectorAll(".nav__links a[href^='#']"));
+  const spySections = spyLinks
+    .map(function (a) { return document.querySelector(a.getAttribute("href")); })
+    .filter(Boolean);
+
   let ticking = false;
   function onScroll() {
     if (ticking) return;
@@ -84,34 +117,19 @@
         const h = document.documentElement.scrollHeight - window.innerHeight;
         progressBar.style.width = (h > 0 ? (y / h) * 100 : 0).toFixed(2) + "%";
       }
-      checkReveals();
+      // scrollspy
+      let current = null;
+      for (let i = 0; i < spySections.length; i++) {
+        if (spySections[i].getBoundingClientRect().top <= 140) current = "#" + spySections[i].id;
+      }
+      spyLinks.forEach(function (a) {
+        a.classList.toggle("is-active", a.getAttribute("href") === current);
+      });
       ticking = false;
     });
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll, { passive: true });
-
-  // reduced motion: just show everything
-  if (prefersReduced) {
-    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
-    counters.forEach(function (el) { animateCount(el); });
-    if (gapLayout) gapLayout.classList.add("in-view");
-  } else {
-    // initial pass (covers everything already in view at load)
-    checkReveals();
-    // a few delayed passes catch late layout/font shifts without needing a scroll
-    setTimeout(checkReveals, 60);
-    setTimeout(checkReveals, 300);
-    window.addEventListener("load", checkReveals);
-    // ultimate safety net: if anything is still hidden/un-counted after 3s, force final state
-    setTimeout(function () {
-      revealEls.forEach(function (el) { el.classList.add("is-visible"); });
-      if (gapLayout) gapLayout.classList.add("in-view");
-      document.querySelectorAll(".num[data-count]").forEach(function (el) {
-        el.textContent = (el.getAttribute("data-prefix") || "") + el.getAttribute("data-count") + (el.getAttribute("data-suffix") || "");
-      });
-    }, 3000);
-  }
   onScroll();
 
   /* ---------- mobile menu ---------- */
@@ -142,6 +160,116 @@
     });
   });
 
+  /* ---------- magnetic buttons ---------- */
+  if (finePointer && !prefersReduced) {
+    document.querySelectorAll("[data-magnetic]").forEach(function (btn) {
+      btn.addEventListener("mousemove", function (ev) {
+        const r = btn.getBoundingClientRect();
+        const dx = ev.clientX - (r.left + r.width / 2);
+        const dy = ev.clientY - (r.top + r.height / 2);
+        btn.style.transform = "translate(" + (dx * 0.16).toFixed(1) + "px," + (dy * 0.28).toFixed(1) + "px)";
+      });
+      btn.addEventListener("mouseleave", function () { btn.style.transform = ""; });
+    });
+  }
+
+  /* ---------- spotlight cards (cursor-following highlight) ---------- */
+  if (finePointer && !prefersReduced) {
+    document.querySelectorAll(".spot").forEach(function (card) {
+      card.addEventListener("pointermove", function (ev) {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (ev.clientX - r.left) + "px");
+        card.style.setProperty("--my", (ev.clientY - r.top) + "px");
+      });
+    });
+  }
+
+  /* ---------- 3D tilt ---------- */
+  if (finePointer && !prefersReduced) {
+    document.querySelectorAll(".tilt").forEach(function (el) {
+      const MAX = 5; // degrees
+      el.addEventListener("pointerenter", function () {
+        el.dataset.prevAnim = el.style.animation;
+        el.style.animation = "none"; // don't fight float/entrance animations
+        el.style.transition = "transform .12s ease-out";
+      });
+      el.addEventListener("pointermove", function (ev) {
+        const r = el.getBoundingClientRect();
+        const px = (ev.clientX - r.left) / r.width - 0.5;
+        const py = (ev.clientY - r.top) / r.height - 0.5;
+        el.style.transform =
+          "perspective(1000px) rotateX(" + (-py * MAX).toFixed(2) + "deg) rotateY(" + (px * MAX).toFixed(2) + "deg)";
+      });
+      el.addEventListener("pointerleave", function () {
+        el.style.transition = "transform .5s cubic-bezier(0.22,1,0.36,1)";
+        el.style.transform = "";
+        el.style.animation = el.dataset.prevAnim || "";
+      });
+    });
+  }
+
+  /* ---------- animated Monday workbook ---------- */
+  const wbRowsEl = document.getElementById("wbRows");
+  if (wbRowsEl && !prefersReduced) {
+    const rows = Array.prototype.slice.call(wbRowsEl.querySelectorAll(".wb-row"));
+    const weekEl = document.getElementById("wbWeek");
+    let week = 27;
+    let idx = 0;
+    let visible = false;
+    let timer = null;
+
+    function tickRow() {
+      const row = rows[idx];
+      const action = row.getAttribute("data-action");
+      row.classList.add("is-updating");
+
+      // nudge the recommended price for raise/invest rows
+      const priceB = row.querySelector(".wb-row__price b");
+      if (priceB && (action === "raise" || action === "invest")) {
+        const m = priceB.textContent.match(/₹(\d+)/);
+        if (m) {
+          let val = parseInt(m[1], 10);
+          const base = parseInt(row.dataset.base || String(val), 10);
+          row.dataset.base = String(base);
+          const delta = 1 + Math.floor(Math.random() * 3);
+          val = action === "raise" ? val + delta : val - delta;
+          // keep the drift within a believable band of the base price
+          val = Math.max(base - 12, Math.min(base + 12, val));
+          priceB.textContent = "₹" + val;
+        }
+      }
+
+      setTimeout(function () { row.classList.remove("is-updating"); }, 1300);
+
+      idx = (idx + 1) % rows.length;
+      if (idx === 0 && weekEl) {
+        week = week >= 52 ? 1 : week + 1;
+        weekEl.textContent = "WEEK " + week;
+      }
+    }
+
+    function startCycle() {
+      if (timer || !visible) return;
+      timer = setInterval(tickRow, 3000);
+    }
+    function stopCycle() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    if ("IntersectionObserver" in window) {
+      const ioWb = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          visible = entry.isIntersecting;
+          if (visible) startCycle(); else stopCycle();
+        });
+      }, { threshold: 0.2 });
+      ioWb.observe(wbRowsEl);
+    } else {
+      visible = true;
+      startCycle();
+    }
+  }
+
   /* ---------- hero canvas: drifting correlation cloud + fitted line ---------- */
   const canvas = document.getElementById("heroCanvas");
   if (canvas && !prefersReduced) {
@@ -152,8 +280,8 @@
     let raf = null;
     let running = false;
     const mouse = { x: -9999, y: -9999 };
-    const GREEN = "21,160,90";   /* green points */
-    const GREEN_DEEP = "14,123,67";   /* deeper green accents */
+    const GREEN = "21,160,90";
+    const GREEN_DEEP = "14,123,67";
 
     function resize() {
       w = canvas.clientWidth || canvas.offsetWidth;
@@ -245,7 +373,7 @@
       heroEl.addEventListener("mouseleave", function () { mouse.x = -9999; mouse.y = -9999; });
     }
 
-    // pause the loop when the hero scrolls out of view (cheap, scroll-based)
+    // pause the loop when the hero scrolls out of view
     window.addEventListener("scroll", function () {
       if (!heroEl) return;
       const past = heroEl.getBoundingClientRect().bottom < 0;

@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Causal Insight Agency — Which of your discount rupees actually made money?</title>
-  <meta name="description" content="Tier-1 incrementality and causal analytics for FMCG brands on Indian quick-commerce and Amazon. We tell you which of your discount and ad spend was truly incremental — and where the next rupee should go." />
+  <title>Causal Insight — Cut discount waste. Grow real sales.</title>
+  <meta name="description" content="Data-driven discount optimization for consumer brands on Blinkit, Zepto and Instamart. One clear action per product, per city, every Monday — plus platform-wise ROAS reallocation and data-driven root-cause analysis of what's working and what isn't." />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M3 27 L12 16 L19 21 L29 6' stroke='%2315a05a' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='29' cy='6' r='4' fill='%2315a05a'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
   <script>document.documentElement.className += " js";</script>
@@ -25,7 +27,7 @@
   <!-- ===== Navigation ===== -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a href="#top" class="brand" aria-label="Causal Insight Agency home">
+      <a href="#top" class="brand" aria-label="Causal Insight home">
         <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
           <path d="M3 27 L12 16 L19 21 L29 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="12" cy="16" r="2.6" fill="currentColor"/>
@@ -36,24 +38,28 @@
       </a>
 
       <nav class="nav__links" aria-label="Primary">
-        <a href="#gap">The Problem</a>
-        <a href="#answer">What We Answer</a>
+        <a href="#services">Services</a>
+        <a href="#leak">The Leak</a>
+        <a href="#optimizer">The Optimizer</a>
+        <a href="#proof">Proof</a>
         <a href="#method">How It Works</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#engagement">Engagement</a>
       </nav>
 
-      <a href="#contact" class="btn btn--sm nav__cta">Book a 20-min call <span class="btn__arrow">→</span></a>
+      <a href="#contact" class="btn btn--sm nav__cta" data-magnetic>Book a 30-min call <span class="btn__arrow" aria-hidden="true">→</span></a>
 
       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <nav class="nav__mobile" id="navMobile" aria-label="Mobile">
-      <a href="#gap">The Problem</a>
-      <a href="#answer">What We Answer</a>
+      <a href="#services">Services</a>
+      <a href="#leak">The Leak</a>
+      <a href="#optimizer">The Optimizer</a>
+      <a href="#proof">Proof</a>
       <a href="#method">How It Works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact" class="btn btn--sm btn--primary">Book a 20-min call <span class="btn__arrow">→</span></a>
+      <a href="#engagement">Engagement</a>
+      <a href="#contact" class="btn btn--sm btn--primary">Book a 30-min call <span class="btn__arrow" aria-hidden="true">→</span></a>
     </nav>
   </header>
 
@@ -63,6 +69,7 @@
     <section class="hero">
       <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
       <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--left" aria-hidden="true"></div>
       <svg class="hero__lines" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <g fill="none" stroke="currentColor" stroke-width="1.5">
           <polyline points="0,170 130,170 210,100 210,18" />
@@ -77,48 +84,55 @@
       <div class="hero__inner">
         <p class="eyebrow reveal" data-reveal>
           <span class="eyebrow__dot"></span>
-          Incrementality &amp; causal analytics for quick-commerce
+          Discount optimization · Blinkit · Zepto · Instamart
         </p>
 
-        <h1 class="hero__title">
-          <span class="reveal" data-reveal>Which of your discount</span>
-          <span class="reveal" data-reveal data-delay="1">rupees <em>actually</em> made</span>
-          <span class="reveal" data-reveal data-delay="2">money?</span>
+        <h1 class="hero__title" aria-label="Cut discount waste. Grow real sales.">
+          <span class="hero__line">
+            <span class="hw" style="--i:0"><i>Cut</i></span>
+            <span class="hw" style="--i:1"><i>discount</i></span>
+            <span class="hw" style="--i:2"><i>waste.</i></span>
+          </span>
+          <span class="hero__line">
+            <span class="hw" style="--i:3"><i>Grow</i></span>
+            <span class="hw" style="--i:4"><i class="serif">real</i></span>
+            <span class="hw" style="--i:5"><i>sales.</i></span>
+          </span>
         </h1>
 
         <p class="hero__sub reveal" data-reveal data-delay="3">
-          You already have dashboards. We answer the question they can't:
-          <strong>which of your discount and ad spend was truly incremental</strong>
-          — and where the next rupee should go.
+          A slice of every discount budget goes to shoppers who'd buy at full price —
+          today, that slice is invisible. <strong>We make the waste visible</strong> and hand you
+          one clear action per product, per city, every Monday.
         </p>
 
         <div class="hero__cta reveal" data-reveal data-delay="4">
-          <a href="#contact" class="btn btn--primary">Book a 20-min call <span class="btn__arrow">→</span></a>
-          <a href="#gap" class="btn btn--ghost">See how it works <span class="btn__arrow">→</span></a>
+          <a href="#contact" class="btn btn--primary" data-magnetic>Book a 30-min call <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a href="#optimizer" class="btn btn--ghost">See the offer <span class="btn__arrow" aria-hidden="true">→</span></a>
         </div>
 
         <p class="hero__note reveal" data-reveal data-delay="5">
-          Tier-1 statistical rigor at a fraction of consultancy pricing.
-          <span class="hero__note-strong">If we find nothing, you've bought certainty.</span>
+          Verify before you commit — a one-week data check up front.
+          <span class="hero__note-strong">If the data isn't enough, we say so and stop.</span>
         </p>
       </div>
 
       <!-- floating sample-finding card -->
-      <aside class="finding-card reveal" data-reveal data-delay="5" aria-hidden="true">
+      <aside class="finding-card reveal spot tilt" data-reveal data-delay="5" aria-hidden="true">
         <div class="finding-card__head">
-          <span class="finding-card__tag">SAMPLE FINDING</span>
-          <span class="finding-card__live"><span></span>decomposition</span>
+          <span class="finding-card__tag">LIVE DEPLOYMENT</span>
+          <span class="finding-card__live"><span></span>recomputed weekly</span>
         </div>
         <p class="finding-card__big">
-          <span class="num" data-count="42" data-prefix="₹" data-suffix="L">₹0L</span>
+          <span class="num" data-count="1.76" data-decimals="2" data-prefix="₹" data-suffix="L">₹0L</span>
         </p>
-        <p class="finding-card__desc">of <strong>₹1.8Cr</strong> promo spend was <span class="bad">non-incremental</span></p>
+        <p class="finding-card__desc">recoverable waste found <strong>per month</strong> — on just <strong>4 products</strong></p>
         <div class="finding-card__bars" aria-hidden="true">
           <span style="--h:34%"></span><span style="--h:60%"></span><span style="--h:42%"></span>
           <span style="--h:78%"></span><span style="--h:50%"></span><span style="--h:88%"></span>
           <span style="--h:46%"></span>
         </div>
-        <p class="finding-card__foot">3 promos to kill · 2 to deepen</p>
+        <p class="finding-card__foot">≈ 1 in 10 discount rupees · 11 cities · Blinkit</p>
       </aside>
 
       <a href="#stats" class="hero__scroll" aria-label="Scroll down">
@@ -126,199 +140,366 @@
       </a>
     </section>
 
+    <!-- ===== MARQUEE ===== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__group">
+          <span>Blinkit</span><i>✦</i><span>Zepto</span><i>✦</i><span>Instamart</span><i>✦</i>
+          <span>Discount optimization</span><i>✦</i><span>ROAS reallocation</span><i>✦</i>
+          <span>Root-cause analysis</span><i>✦</i><span>Every Monday</span><i>✦</i>
+          <span>Safety-capped moves</span><i>✦</i><span>Scorecard-verified</span><i>✦</i>
+          <span>Verdict in week 1</span><i>✦</i>
+        </div>
+        <div class="marquee__group">
+          <span>Blinkit</span><i>✦</i><span>Zepto</span><i>✦</i><span>Instamart</span><i>✦</i>
+          <span>Discount optimization</span><i>✦</i><span>ROAS reallocation</span><i>✦</i>
+          <span>Root-cause analysis</span><i>✦</i><span>Every Monday</span><i>✦</i>
+          <span>Safety-capped moves</span><i>✦</i><span>Scorecard-verified</span><i>✦</i>
+          <span>Verdict in week 1</span><i>✦</i>
+        </div>
+      </div>
+    </div>
+
     <!-- ===== STATS STRIP ===== -->
     <section class="stats" id="stats">
       <div class="stats__grid">
         <div class="stat reveal" data-reveal>
-          <span class="stat__num"><span class="num" data-count="25" data-suffix="%">0%</span></span>
-          <p class="stat__label">of q-commerce revenue spent on ads &amp; discounts — with <strong>zero</strong> incrementality measurement</p>
+          <span class="stat__num"><span class="num" data-count="10" data-suffix="%">0%</span></span>
+          <p class="stat__label">of discount spend proved <strong>recoverable</strong> on a live deployment — waste you can take home</p>
         </div>
         <div class="stat reveal" data-reveal data-delay="1">
-          <span class="stat__num"><span class="num" data-count="10" data-suffix="×">0×</span></span>
-          <p class="stat__label">lower cost than a Tier-1 consultancy MMM engagement</p>
+          <span class="stat__num"><span class="num" data-count="1.76" data-decimals="2" data-prefix="₹" data-suffix="L">₹0L</span></span>
+          <p class="stat__label">per month of recoverable waste found on <strong>just 4 products</strong></p>
         </div>
         <div class="stat reveal" data-reveal data-delay="2">
-          <span class="stat__num"><span class="num" data-count="10" data-suffix=" days">0 days</span></span>
-          <p class="stat__label">working days from your data to a ₹-denominated decision</p>
+          <span class="stat__num"><span class="num" data-count="87" data-suffix="%">0%</span></span>
+          <p class="stat__label">of sales response explained on data the model had <strong>never seen</strong></p>
         </div>
         <div class="stat reveal" data-reveal data-delay="3">
-          <span class="stat__num"><span class="num" data-count="1" data-suffix="/mo">0/mo</span></span>
-          <p class="stat__label">causal question answered, rigorously, every single month</p>
+          <span class="stat__num"><span class="num" data-count="1" data-suffix="&nbsp;hr">0&nbsp;hr</span></span>
+          <p class="stat__label">of your team's time per week — <strong>the rest is done for you</strong></p>
         </div>
       </div>
     </section>
 
-    <!-- ===== THE GAP ===== -->
-    <section class="section gap" id="gap">
+    <!-- ===== SERVICES / WHAT WE DO ===== -->
+    <section class="section services" id="services">
       <div class="section__head">
-        <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>Why dashboards aren't enough</p>
+        <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>What we do</p>
         <h2 class="section__title reveal" data-reveal data-delay="1">
-          Your dashboards tell you <em>what</em> happened. Not what <em>worked</em>.
+          One causal engine. <em>Three</em> ways in.
         </h2>
         <p class="section__lead reveal" data-reveal data-delay="2">
-          You've already got dashboards, sales trackers and MIS reports — they're great at showing the numbers.
-          But the questions that decide where your money actually goes — <em>was that promo incremental? where's
-          the next rupee best spent?</em> — need causal analysis your tools were never built to do. That's the gap we close.
+          The <strong>Discount Optimizer</strong> is the flagship. The same engine — your own data,
+          causal analysis, rupee-denominated answers — also powers two focused engagements
+          brands reach out for.
         </p>
       </div>
 
-      <div class="gap__layout">
-        <!-- Dashboard vs. insight (consumer framing) -->
-        <div class="contrast" aria-label="What your dashboard shows versus what we tell you">
-          <div class="contrast__card contrast__card--dash reveal" data-reveal>
-            <span class="contrast__tag">What your dashboard shows</span>
-            <p class="contrast__metric">Blinkit sales dropped <span class="down">▼ 12%</span> last week.</p>
-            <div class="contrast__spark" aria-hidden="true">
-              <span style="--h:72%"></span><span style="--h:64%"></span><span style="--h:78%"></span>
-              <span style="--h:55%"></span><span style="--h:41%"></span><span style="--h:34%"></span>
-            </div>
-            <p class="contrast__note">It can't tell you <em>why</em> — or what to do about it.</p>
+      <div class="svc-grid" data-stagger>
+        <article class="svc svc--flag spot reveal" data-reveal>
+          <span class="svc__kind">Primary offer · start here</span>
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <rect x="6" y="8" width="36" height="34" rx="5" stroke="currentColor" stroke-width="2.4"/>
+              <path d="M6 17h36" stroke="currentColor" stroke-width="2.4"/>
+              <path d="M13 25h12M13 33h8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M31 33l4 4 7-8" stroke="var(--green-deep, #0b6e3d)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 4v7M33 4v7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
           </div>
+          <h3>Discount Optimizer</h3>
+          <p>One clear action per product, per city, every Monday — raise, invest, hold or test.
+             Safety-capped moves, verified by a scorecard you keep.</p>
+          <a class="svc__link" href="#optimizer">See the full offer <span aria-hidden="true">→</span></a>
+        </article>
 
-          <div class="contrast__flow reveal" data-reveal data-delay="1" aria-hidden="true"><span></span></div>
+        <article class="svc spot reveal" data-reveal data-delay="1">
+          <span class="svc__kind svc__kind--alt">Also on offer</span>
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M6 40C14 40 14 12 24 12s10 24 18 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M6 30c10 0 8-10 18-10" stroke="var(--green-deep, #0b6e3d)" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 5"/>
+              <circle cx="24" cy="12" r="3" fill="var(--green-deep, #0b6e3d)"/>
+            </svg>
+          </div>
+          <h3>Platform-wise ROAS reallocation</h3>
+          <p>Where does the next ₹10,000 of ad spend earn most — Blinkit, Zepto or Instamart?
+             Marginal-ROAS curves per platform and product show where budget still compounds,
+             and where it's saturated.</p>
+          <a class="svc__link" href="mailto:srestasocialmedia@gmail.com?subject=ROAS%20reallocation%20enquiry">Ask about ROAS <span aria-hidden="true">→</span></a>
+        </article>
 
-          <div class="contrast__card contrast__card--us reveal" data-reveal data-delay="2">
-            <span class="contrast__tag contrast__tag--us">What we tell you</span>
-            <p class="contrast__metric">Most of that “drop” was last week's promo <strong>pulling sales forward</strong> — real demand held steady.</p>
-            <p class="contrast__decision">→ Don't deepen the discount. You'd be paying for sales you'd get anyway.</p>
+        <article class="svc spot reveal" data-reveal data-delay="2">
+          <span class="svc__kind svc__kind--alt">Also on offer</span>
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="21" cy="21" r="13" stroke="currentColor" stroke-width="2.4"/>
+              <path d="M31 31l11 11" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M15 25l4-6 4 3 5-8" stroke="var(--green-deep, #0b6e3d)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-        </div>
-
-        <!-- Why the gap persists -->
-        <div class="gap__why">
-          <div class="why-card reveal" data-reveal>
-            <span class="why-card__n">01</span>
-            <h3>Dashboards stop at “what”</h3>
-            <p>Your tracker shows sales moved — up or down. It can't separate a promo that genuinely <em>created</em> demand from one that just handed money to buyers who'd have purchased anyway.</p>
-          </div>
-          <div class="why-card reveal" data-reveal data-delay="1">
-            <span class="why-card__n">02</span>
-            <h3>Your data already holds the answer</h3>
-            <p>The exports sit in your account today. What's missing is the causal analysis that turns them into “repeat this, kill that” — the work dashboards and MIS reports simply don't do.</p>
-          </div>
-          <div class="why-card reveal" data-reveal data-delay="2">
-            <span class="why-card__n">03</span>
-            <h3>We hand you the decision</h3>
-            <p>We run the incrementality, elasticity and marginal-ROAS math on your own numbers, then give back one clear, rupee-denominated decision — not another chart to interpret.</p>
-          </div>
-        </div>
+          <h3>Root-cause analysis (RCA)</h3>
+          <p>Sales moved — but <em>why</em>? We trace what's working and what isn't in your own
+             data — price, discounts, availability, visibility — and hand you the fix,
+             not another chart.</p>
+          <a class="svc__link" href="mailto:srestasocialmedia@gmail.com?subject=Root-cause%20analysis%20enquiry">Ask about RCA <span aria-hidden="true">→</span></a>
+        </article>
       </div>
     </section>
 
-    <!-- ===== WHAT WE ANSWER ===== -->
-    <section class="section answer" id="answer">
+    <!-- ===== THE LEAK ===== -->
+    <section class="section leak" id="leak">
       <div class="section__head">
-        <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>What we answer</p>
-        <h2 class="section__title reveal" data-reveal data-delay="1">
-          Three questions your dashboard will never answer.
+        <h2 class="section__title reveal" data-reveal>
+          Discount money leaks in <em>three</em> ways.
         </h2>
-        <p class="section__lead reveal" data-reveal data-delay="2">
-          Not more charts. Causal answers — each one ending in a rupee-denominated decision you control.
+        <p class="section__lead reveal" data-reveal data-delay="1">
+          A slice of every discount budget goes to shoppers who'd buy at full price.
+          Today, that slice is invisible — dashboards were never built to see it.
+          Causal analysis is.
         </p>
       </div>
 
-      <div class="cards">
-        <article class="qcard reveal" data-reveal>
-          <div class="qcard__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none"><path d="M6 38h36M10 38V20M20 38V12M30 38V26M40 38V8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M10 20l10-8 10 14 10-18" stroke="var(--green, #15a05a)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/></svg>
+      <div class="leaks" data-stagger>
+        <article class="leak-card spot reveal" data-reveal>
+          <div class="leak-card__viz leak-card__viz--subsidy" aria-hidden="true">
+            <span style="--h:82%"></span><span style="--h:70%"></span><span style="--h:88%"></span>
+            <span style="--h:76%"></span><span style="--h:84%"></span><span style="--h:72%"></span>
           </div>
-          <h3>Promo incrementality</h3>
-          <p class="qcard__q">"Was that discount truly incremental — or did it just subsidize buyers who'd have bought anyway?"</p>
-          <p class="qcard__a">Baseline-uplift decomposition separates real lift from pantry-loading, cannibalization, and subsidy.</p>
-          <p class="qcard__d">→ which promos to repeat, kill, or re-depth</p>
+          <span class="leak-card__n">Leak 01</span>
+          <h3>Paying shoppers who'd buy anyway</h3>
+          <p>Your regular buyer doesn't need 20% off. That discount is margin gone for zero extra volume.</p>
         </article>
 
-        <article class="qcard reveal" data-reveal data-delay="1">
-          <div class="qcard__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none"><path d="M6 40C14 40 14 12 24 12s10 24 18 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M6 30c10 0 8-10 18-10" stroke="var(--green, #15a05a)" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 5"/><circle cx="24" cy="12" r="3" fill="var(--green, #15a05a)"/></svg>
+        <article class="leak-card spot reveal" data-reveal data-delay="1">
+          <div class="leak-card__viz" aria-hidden="true">
+            <svg viewBox="0 0 220 64" fill="none" preserveAspectRatio="none">
+              <path class="leak-spike" d="M0 46 L36 44 L62 42 L84 12 L104 8 L122 40 L142 56 L164 54 L192 48 L220 46"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="0" y1="46" x2="220" y2="46" stroke="currentColor" stroke-width="1" stroke-dasharray="3 5" opacity=".35"/>
+            </svg>
           </div>
-          <h3>Marginal ROAS</h3>
-          <p class="qcard__q">"Where does the <em>next</em> ₹10,000 of ad spend earn the most — not on average, but at the margin?"</p>
-          <p class="qcard__a">Spend-vs-sales saturation curves per platform &amp; SKU reveal where you've crossed the point of diminishing returns.</p>
-          <p class="qcard__d">→ reallocate budget to where it still compounds</p>
+          <span class="leak-card__n">Leak 02</span>
+          <h3>Paying for stockpiling</h3>
+          <p>Deep promos pull next month's sales into this month. The spike looks great; the dip cancels it.</p>
         </article>
 
-        <article class="qcard reveal" data-reveal data-delay="2">
-          <div class="qcard__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none"><path d="M8 8v32h32" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M14 34L34 14" stroke="var(--green, #15a05a)" stroke-width="2.2" stroke-linecap="round"/><circle cx="14" cy="34" r="2.6" fill="currentColor"/><circle cx="34" cy="14" r="2.6" fill="currentColor"/></svg>
+        <article class="leak-card spot reveal" data-reveal data-delay="2">
+          <div class="leak-card__viz leak-card__viz--swap" aria-hidden="true">
+            <div class="swap-bar swap-bar--up"><b></b><label>1L</label></div>
+            <span class="swap-arrow">⇄</span>
+            <div class="swap-bar swap-bar--down"><b></b><label>500ml</label></div>
           </div>
-          <h3>Price elasticity</h3>
-          <p class="qcard__q">"What's the right price — and the right discount depth — for each hero SKU?"</p>
-          <p class="qcard__a">Log-log regression on natural price variation across platforms turns discounting from gut-feel into arithmetic.</p>
-          <p class="qcard__d">→ stop over-discounting; price to the curve</p>
+          <span class="leak-card__n">Leak 03</span>
+          <h3>Paying one pack to rob another</h3>
+          <p>The 1L promo steals from your own 500ml. Units move sideways — but it books as a “win”.</p>
         </article>
       </div>
 
-      <p class="answer__more reveal" data-reveal>
-        Plus, on retainer: cross-platform cannibalization · stockout cost &amp; substitution · organic halo · early-warning control charts.
+      <p class="leak__net reveal" data-reveal>
+        Net effect: <strong>your largest promotional line is also your least measured one.</strong>
       </p>
     </section>
 
-    <!-- ===== THE EDGE ===== -->
-    <section class="section section--dark edge" id="edge">
-      <svg class="panel-fx" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <g class="fx-links">
-          <line x1="140" y1="130" x2="360" y2="90"/><line x1="360" y1="90" x2="540" y2="210"/>
-          <line x1="280" y1="310" x2="540" y2="210"/><line x1="540" y1="210" x2="720" y2="120"/>
-          <line x1="720" y1="120" x2="920" y2="300"/><line x1="660" y1="430" x2="920" y2="300"/>
-          <line x1="920" y1="300" x2="1080" y2="150"/><line x1="920" y1="300" x2="1010" y2="470"/>
-          <line x1="280" y1="310" x2="220" y2="500"/><line x1="360" y1="90" x2="280" y2="310"/>
-          <line x1="660" y1="430" x2="840" y2="470"/><line x1="840" y1="470" x2="1010" y2="470"/>
-          <line x1="540" y1="210" x2="660" y2="430"/>
-        </g>
-        <g class="fx-flows">
-          <line class="flow f1" x1="360" y1="90" x2="540" y2="210"/>
-          <line class="flow f2" x1="540" y1="210" x2="720" y2="120"/>
-          <line class="flow f3" x1="720" y1="120" x2="920" y2="300"/>
-          <line class="flow f4" x1="920" y1="300" x2="1010" y2="470"/>
-        </g>
-        <g class="fx-nodes">
-          <circle cx="140" cy="130" r="2.5"/><circle class="pulse p1" cx="360" cy="90" r="3"/>
-          <circle cx="280" cy="310" r="2.5"/><circle class="pulse p2" cx="540" cy="210" r="3.5"/>
-          <circle cx="720" cy="120" r="2.5"/><circle cx="660" cy="430" r="2.5"/>
-          <circle class="pulse p3" cx="920" cy="300" r="3.5"/><circle cx="1080" cy="150" r="2.5"/>
-          <circle class="pulse p4" cx="1010" cy="470" r="3"/><circle cx="220" cy="500" r="2.5"/>
-          <circle cx="840" cy="470" r="2.5"/>
-        </g>
-      </svg>
-      <div class="edge__grid">
-        <div class="edge__left">
-          <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>Why us</p>
-          <h2 class="section__title reveal" data-reveal data-delay="1">
-            Accountability is the product.
-          </h2>
-          <p class="section__lead reveal" data-reveal data-delay="2">
-            A budget-moving causal claim doesn't get bought from a black box. It gets bought with a named
-            human attached — someone who will sit in the room and defend every modelling choice. That's the
-            one thing a dashboard structurally can't offer.
-          </p>
-          <p class="edge__triple reveal" data-reveal data-delay="3">
-            Built on a rare triple:
-            <span>domain context</span> <i>+</i> <span>data access</span> <i>+</i> <span>first-principles framing</span>.
-          </p>
+    <!-- ===== THE OPTIMIZER (primary offer, dark panel) ===== -->
+    <section class="section section--dark optimizer" id="optimizer">
+      <div class="aurora" aria-hidden="true"></div>
+      <div class="optimizer__head">
+        <h2 class="section__title reveal" data-reveal>
+          The <em>Discount Optimizer.</em>
+        </h2>
+        <p class="section__lead reveal" data-reveal data-delay="1">
+          One clear action per product, per city — every Monday. Delivered as a
+          ready-to-execute workbook: exact prices, this week and the weeks ahead.
+        </p>
+      </div>
+
+      <div class="optimizer__grid">
+        <!-- animated Monday workbook -->
+        <div class="workbook-wrap reveal" data-reveal>
+          <div class="workbook tilt" id="workbook">
+            <div class="workbook__head">
+              <span class="workbook__title">MONDAY PLAN · <b id="wbWeek">WEEK 27</b></span>
+              <span class="workbook__live"><span></span>11 cities</span>
+            </div>
+            <div class="workbook__cols" aria-hidden="true">
+              <span>Product</span><span>City</span><span>Price move</span><span>Action</span>
+            </div>
+            <div class="workbook__rows" id="wbRows">
+              <div class="wb-row" data-action="raise">
+                <span class="wb-row__prod">Cold-pressed oil 1L</span>
+                <span class="wb-row__city">Bengaluru</span>
+                <span class="wb-row__price">₹285 <i>→</i> <b>₹294</b></span>
+                <span class="chip chip--raise">Raise</span>
+              </div>
+              <div class="wb-row" data-action="invest">
+                <span class="wb-row__prod">Peanut butter 340g</span>
+                <span class="wb-row__city">Mumbai</span>
+                <span class="wb-row__price">₹249 <i>→</i> <b>₹229</b></span>
+                <span class="chip chip--invest">Invest</span>
+              </div>
+              <div class="wb-row" data-action="hold">
+                <span class="wb-row__prod">Wild honey 500g</span>
+                <span class="wb-row__city">Delhi</span>
+                <span class="wb-row__price">₹449 <i>·</i> <b>keep</b></span>
+                <span class="chip chip--hold">Hold</span>
+              </div>
+              <div class="wb-row" data-action="test">
+                <span class="wb-row__prod">A2 ghee 500ml</span>
+                <span class="wb-row__city">Pune</span>
+                <span class="wb-row__price">thin data <i>·</i> <b>A/B</b></span>
+                <span class="chip chip--test">Test</span>
+              </div>
+              <div class="wb-row" data-action="raise">
+                <span class="wb-row__prod">Millet muesli 400g</span>
+                <span class="wb-row__city">Hyderabad</span>
+                <span class="wb-row__price">₹315 <i>→</i> <b>₹325</b></span>
+                <span class="chip chip--raise">Raise</span>
+              </div>
+            </div>
+            <div class="workbook__foot">
+              <span>Recovered this month: <b>₹1.76L</b></span>
+              <span>every number recomputed weekly</span>
+            </div>
+          </div>
+          <p class="workbook__caption">Illustrative workbook — your version carries exact prices, and why.</p>
         </div>
 
-        <div class="edge__right">
-          <div class="actions">
-            <div class="action action--cut reveal" data-reveal>
-              <span class="action__tag">Eliminate</span>
-              <p>Custom proposals · hourly billing · the "we do everything" menu · 9-month onboarding</p>
-            </div>
-            <div class="action action--cut reveal" data-reveal data-delay="1">
-              <span class="action__tag">Reduce</span>
-              <p>Price (~10×) · breadth · time-to-first-insight (days, not months)</p>
-            </div>
-            <div class="action action--up reveal" data-reveal data-delay="2">
-              <span class="action__tag">Raise</span>
-              <p>Statistical rigor · accountability · use of your internal data · honesty about limits</p>
-            </div>
-            <div class="action action--up reveal" data-reveal data-delay="3">
-              <span class="action__tag">Create</span>
-              <p>A productized audit · outcome-denominated pricing · a monthly causal cadence</p>
-            </div>
+        <!-- the four actions -->
+        <div class="actions4" data-stagger>
+          <article class="action4 spot reveal" data-reveal>
+            <span class="action4__chip chip chip--raise">Raise</span>
+            <p>Price up in small steps where shoppers were buying anyway. Margin comes home.</p>
+          </article>
+          <article class="action4 spot reveal" data-reveal data-delay="1">
+            <span class="action4__chip chip chip--invest">Invest</span>
+            <p>Redirect the savings to where deeper discounts genuinely create new volume.</p>
+          </article>
+          <article class="action4 spot reveal" data-reveal data-delay="2">
+            <span class="action4__chip chip chip--hold">Hold</span>
+            <p>Where the discount is earning its keep, nothing changes.</p>
+          </article>
+          <article class="action4 spot reveal" data-reveal data-delay="3">
+            <span class="action4__chip chip chip--test">Test</span>
+            <p>Where evidence is thin, a small price test builds it — no guessing.</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- weekly rhythm -->
+      <div class="rhythm">
+        <h3 class="optimizer__subhead reveal" data-reveal>A done-for-you weekly rhythm — about <em>one hour</em> of your team's time.</h3>
+        <div class="rhythm__grid" data-stagger>
+          <div class="rhythm__item reveal" data-reveal>
+            <span class="rhythm__when">Every Monday</span>
+            <h4>Action workbook</h4>
+            <p>Exact price per product per city — and why.</p>
+          </div>
+          <div class="rhythm__item reveal" data-reveal data-delay="1">
+            <span class="rhythm__when">Every Monday</span>
+            <h4>30-min review call</h4>
+            <p>You approve before anything changes.</p>
+          </div>
+          <div class="rhythm__item reveal" data-reveal data-delay="2">
+            <span class="rhythm__when">Always current</span>
+            <h4>Leadership dashboard</h4>
+            <p>Spend, savings and sales impact on one screen.</p>
+          </div>
+          <div class="rhythm__item reveal" data-reveal data-delay="3">
+            <span class="rhythm__when">Updates weekly</span>
+            <h4>Reality scorecard</h4>
+            <p>Every prediction graded against what happened.</p>
           </div>
         </div>
       </div>
+
+      <!-- safety rails -->
+      <div class="rails">
+        <h3 class="optimizer__subhead reveal" data-reveal>Worst case: one week of small mispricing, <em>in one city.</em></h3>
+        <div class="rails__grid" data-stagger>
+          <div class="rail reveal" data-reveal>
+            <b>Small steps only</b>
+            <p>About 3 percentage points a week — never a shock.</p>
+          </div>
+          <div class="rail reveal" data-reveal data-delay="1">
+            <b>Only proven prices</b>
+            <p>Every target is a price this product has already sold at, in this city.</p>
+          </div>
+          <div class="rail reveal" data-reveal data-delay="2">
+            <b>It refuses to guess</b>
+            <p>Thin data gets a test plan, not an invented number.</p>
+          </div>
+          <div class="rail reveal" data-reveal data-delay="3">
+            <b>You stay in charge</b>
+            <p>Nothing changes without your approval at the Monday review.</p>
+          </div>
+        </div>
+        <p class="optimizer__micro reveal" data-reveal>
+          From you: a daily sales export (6+ months) and your brand names. Setup takes about a day.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== PROOF ===== -->
+    <section class="section proof" id="proof">
+      <div class="section__head">
+        <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>Proof, not promises</p>
+        <h2 class="section__title reveal" data-reveal data-delay="1">
+          Tested on data it has <em>never seen.</em> Error rate published.
+        </h2>
+        <p class="section__lead reveal" data-reveal data-delay="2">
+          Every claim below comes from a live deployment — measured, not estimated,
+          and recomputed from data every week.
+        </p>
+      </div>
+
+      <div class="proof__grid">
+        <div class="donut-wrap reveal" data-reveal>
+          <div class="donut" id="donut" role="img" aria-label="Roughly 10 percent of monthly discount spend proved recoverable">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <circle class="donut__track" cx="100" cy="100" r="80"/>
+              <circle class="donut__val" cx="100" cy="100" r="80"/>
+            </svg>
+            <div class="donut__center">
+              <span class="donut__big"><span class="num" data-count="10" data-suffix="%">0%</span></span>
+              <span class="donut__label">of discount spend<br/>proved recoverable</span>
+            </div>
+          </div>
+          <div class="donut__legend" aria-hidden="true">
+            <span><i class="dot dot--green"></i>Recoverable waste (₹1.76L)</span>
+            <span><i class="dot dot--soft"></i>Working discount (₹16.6L)</span>
+          </div>
+        </div>
+
+        <div class="proof__cards" data-stagger>
+          <article class="proof-card spot reveal" data-reveal>
+            <span class="proof-card__big"><span class="num" data-count="1.76" data-decimals="2" data-prefix="₹" data-suffix="L">₹0L</span> <em>/ month</em></span>
+            <h3>Waste found on just 4 products</h3>
+            <p>Measured, not estimated — every rupee tied to a product and a city.</p>
+          </article>
+          <article class="proof-card spot reveal" data-reveal data-delay="1">
+            <span class="proof-card__big"><span class="num" data-count="87" data-suffix="%">0%</span></span>
+            <h3>Of sales response explained on unseen data</h3>
+            <p>Labelled “moderate” by the system itself — never rounded up.</p>
+          </article>
+          <article class="proof-card spot reveal" data-reveal data-delay="2">
+            <span class="proof-card__big">Cautious</span>
+            <h3>Warned of −13.8% volume; reality was −8.8%</h3>
+            <p>Its warnings overstate risk — following it is safer than it sounds.</p>
+          </article>
+          <article class="proof-card spot reveal" data-reveal data-delay="3">
+            <span class="proof-card__big">“Not enough data”</span>
+            <h3>Is an answer it's allowed to give</h3>
+            <p>Weak evidence gets flagged for testing — not guessed at.</p>
+          </article>
+        </div>
+      </div>
+
+      <p class="proof__foot reveal" data-reveal>
+        Live deployment: a 4-product organic brand · 11 cities · Blinkit. Validation pack available on request.
+        <strong>A 30–50 product portfolio spends ₹1–5&nbsp;Cr/month on discounts — with proportionally more waste.</strong>
+      </p>
     </section>
 
     <!-- ===== METHOD / HOW IT WORKS ===== -->
@@ -326,10 +507,11 @@
       <div class="section__head">
         <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>How it works</p>
         <h2 class="section__title reveal" data-reveal data-delay="1">
-          From messy exports to one clear decision.
+          Technical under the hood. <em>Simple</em> on the surface.
         </h2>
         <p class="section__lead reveal" data-reveal data-delay="2">
-          A fixed, repeatable path. No proposals to negotiate, no scope creep — just data in, decision out.
+          Four steps, one weekly loop. No proposals to negotiate, no scope creep —
+          your data in, Monday's plan out.
         </p>
       </div>
 
@@ -337,98 +519,135 @@
         <li class="step reveal" data-reveal>
           <span class="step__num">01</span>
           <div class="step__body">
-            <h3>Data request</h3>
-            <p>A precise checklist of exports you already have — Blinkit, Zepto, Instamart, Amazon SC/VC. No new tracking, no engineering lift.</p>
+            <h3>Learn your history</h3>
+            <p>6–12 months of daily sales show how volume responded to every price move you've already made.</p>
           </div>
         </li>
         <li class="step reveal" data-reveal data-delay="1">
           <span class="step__num">02</span>
           <div class="step__body">
-            <h3>Harmonization</h3>
-            <p>Messy multi-platform exports consolidated into one clean, reconciled layer — sell-in vs sell-through, number formats, the lot. The unglamorous part that is the real moat.</p>
+            <h3>Grade the evidence</h3>
+            <p>Strong evidence acts. Weak evidence is locked out until a test builds it — no guessing allowed.</p>
           </div>
         </li>
         <li class="step reveal" data-reveal data-delay="2">
           <span class="step__num">03</span>
           <div class="step__body">
-            <h3>Causal analysis</h3>
-            <p>Baseline-uplift decomposition, elasticity regression, saturation curves, geo-holdout design — the same econometrics the big consultancies reserve for their largest clients.</p>
+            <h3>Recommend the moves</h3>
+            <p>The best price per product, per city — written into Monday's plan as an exact, ready-to-execute number.</p>
           </div>
         </li>
         <li class="step reveal" data-reveal data-delay="3">
           <span class="step__num">04</span>
           <div class="step__body">
-            <h3>The readout</h3>
-            <p>One report that leads with a single ₹-denominated sentence, three concrete actions, and one recommended experiment. It ends with the next question — never a chart for its own sake.</p>
+            <h3>Score itself</h3>
+            <p>Every prediction checked against reality, on a scorecard you keep. Accuracy is public between us.</p>
           </div>
         </li>
       </ol>
+      <p class="method__micro reveal" data-reveal>Full methodology available for your analysts on request.</p>
     </section>
 
-    <!-- ===== PRICING ===== -->
-    <section class="section pricing" id="pricing">
+    <!-- ===== COMPARISON ===== -->
+    <section class="section compare" id="compare">
       <div class="section__head">
-        <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>How we work together</p>
+        <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>Why this wins</p>
         <h2 class="section__title reveal" data-reveal data-delay="1">
-          Two ways to start. Both end in a <em>decision</em>.
+          Beats the agency playbook — <em>and</em> building in-house.
+        </h2>
+      </div>
+
+      <div class="table-scroll reveal" data-reveal data-delay="2">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Typical agency</th>
+              <th scope="col">Build in-house</th>
+              <th scope="col" class="cmp__us">This service</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Counting wins</th>
+              <td>Every promo unit counted</td>
+              <td>Depends who builds it</td>
+              <td class="cmp__us">Fake lift netted out</td>
+            </tr>
+            <tr>
+              <th scope="row">Accountability</th>
+              <td>Rarely tracked</td>
+              <td>Unaudited</td>
+              <td class="cmp__us">Weekly scorecard</td>
+            </tr>
+            <tr>
+              <th scope="row">Time to value</th>
+              <td>Ongoing retainer</td>
+              <td>3–6 months</td>
+              <td class="cmp__us">Verdict in week 1</td>
+            </tr>
+            <tr>
+              <th scope="row">If data is weak</th>
+              <td>Runs anyway</td>
+              <td>Found out late</td>
+              <td class="cmp__us">We say so — and stop</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== ENGAGEMENT ===== -->
+    <section class="section engagement" id="engagement">
+      <div class="section__head">
+        <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>How we start</p>
+        <h2 class="section__title reveal" data-reveal data-delay="1">
+          Verify first. Commit only while the results <em>hold up.</em>
         </h2>
         <p class="section__lead reveal" data-reveal data-delay="2">
-          Fixed scope, no surprises. Begin with a one-off audit, then scale into an ongoing evidence retainer
-          once it has earned its place. Pricing is simple — we'll walk you through it on a quick call.
+          No long contract, no leap of faith. One decision today: agree the data export.
         </p>
       </div>
 
-      <div class="plans">
-        <article class="plan reveal" data-reveal>
-          <p class="plan__name">Promo Leak Audit</p>
-          <p class="plan__tagline">Start here — one audit, one number</p>          <p class="plan__founding">One-off project · founding-partner spots for the first 5 brands</p>
-          <ul class="plan__list">
-            <li>Last 2 quarters of promos, up to 2 platforms &amp; 10 SKUs</li>
-            <li>Baseline-uplift decomposition + pantry-loading + cannibalization check</li>
-            <li>8–10 page report: ₹ wasted vs incremental, per promo</li>
-            <li>3 concrete actions + 1 recommended experiment</li>
-            <li>10 working days from data receipt</li>
-          </ul>
-          <a href="#contact" class="btn btn--ghost btn--block">Start with an audit <span class="btn__arrow">→</span></a>
-        </article>
+      <ol class="timeline reveal" data-reveal id="timeline">
+        <li class="tl">
+          <span class="tl__dot"></span>
+          <span class="tl__tag">Week 0</span>
+          <h3>Share the export</h3>
+          <p>Daily sales per product per city. Setup: about a day.</p>
+        </li>
+        <li class="tl">
+          <span class="tl__dot"></span>
+          <span class="tl__tag">Week 1</span>
+          <h3>Get your verdict</h3>
+          <p>A clear read on what can be optimized now. Go / no-go is yours — if the data isn't enough, we say so and stop.</p>
+        </li>
+        <li class="tl">
+          <span class="tl__dot"></span>
+          <span class="tl__tag">Weeks 2–12</span>
+          <h3>Weekly optimization</h3>
+          <p>Monday workbook, 30-min review, and a scorecard filling with results from day one.</p>
+        </li>
+        <li class="tl">
+          <span class="tl__dot"></span>
+          <span class="tl__tag">Month 3</span>
+          <h3>Decide on evidence</h3>
+          <p>Continue, renegotiate on documented savings, or walk away. Everything stays with you.</p>
+        </li>
+      </ol>
 
-        <article class="plan plan--feature reveal" data-reveal data-delay="1">
-          <span class="plan__badge">Most popular</span>
-          <p class="plan__name">Evidence Engine Retainer</p>
-          <p class="plan__tagline">One causal question, answered every month</p>          <p class="plan__founding">Monthly · scoped to your brand's size</p>
-          <ul class="plan__list">
-            <li>One causal question answered rigorously each month</li>
-            <li>Quarterly geo-experiment design (city-holdout tests)</li>
-            <li>Early-warning control charts running continuously</li>
-            <li>Every deliverable ends in a ₹-denominated decision</li>
-            <li>A named analyst, accountable, in the room</li>
-          </ul>
-          <a href="#contact" class="btn btn--primary btn--block">Book a 20-min call <span class="btn__arrow">→</span></a>
-        </article>
-
-        <article class="plan reveal" data-reveal data-delay="2">
-          <p class="plan__name">Geo-Experiment Program</p>
-          <p class="plan__tagline">The causal gold standard</p>          <p class="plan__founding">Per quarter · add-on for retainer clients</p>
-          <ul class="plan__list">
-            <li>Designed &amp; measured city-holdout experiments</li>
-            <li>True causal lift — not modelled, observed</li>
-            <li>The test q-commerce uniquely makes possible</li>
-            <li>Almost nobody runs these for mid-market brands</li>
-            <li>Settles the questions models can only estimate</li>
-          </ul>
-          <a href="#contact" class="btn btn--ghost btn--block">Ask about experiments <span class="btn__arrow">→</span></a>
-        </article>
-      </div>
-
-      <p class="pricing__honesty reveal" data-reveal>
-        <strong>Honest by default.</strong> Some questions the data genuinely can't answer — we'll tell you which, and design the
-        experiment that would settle it. And you always start with one audit, so you see the value before any retainer.
+      <p class="engagement__note reveal" data-reveal>
+        <strong>Commercials:</strong> discussed on our first call — structured so the service funds
+        itself out of recovered waste. The same call can scope a
+        <a href="#services" class="engagement__svc">ROAS-reallocation or root-cause engagement</a>
+        instead, or a one-off promo-leak audit if you're not ready for the weekly service.
       </p>
     </section>
 
     <!-- ===== CONTACT / CTA ===== -->
     <section class="section contact" id="contact">
       <div class="contact__inner reveal" data-reveal>
+        <div class="aurora" aria-hidden="true"></div>
         <svg class="panel-fx" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <g class="fx-links">
             <line x1="140" y1="130" x2="360" y2="90"/><line x1="360" y1="90" x2="540" y2="210"/>
@@ -455,19 +674,20 @@
           </g>
         </svg>
         <h2 class="contact__title">
-          Find the lakhs you're<br /><em>silently burning.</em>
+          Let's find out what<br /><em>your data supports.</em>
         </h2>
         <p class="contact__sub">
-          Send one past promo's data. In ten working days you'll know exactly how much of it was real —
-          and what to do next. If we find nothing, you've bought certainty.
+          A 30-minute call is enough to scope the data check — or a ROAS-reallocation or
+          root-cause engagement — and agree commercials. If the data isn't enough,
+          we say so — and you've lost nothing.
         </p>
         <div class="contact__cta">
-          <a href="mailto:hello@causalinsight.in?subject=Promo%20Leak%20Audit%20enquiry" class="btn btn--primary btn--lg">
-            Book a 20-min call <span class="btn__arrow">→</span>
+          <a href="mailto:srestasocialmedia@gmail.com?subject=Discount%20Optimizer%20%E2%80%94%20data%20check" class="btn btn--primary btn--lg" data-magnetic>
+            Book a 30-min call <span class="btn__arrow" aria-hidden="true">→</span>
           </a>
-          <a href="mailto:hello@causalinsight.in" class="contact__email">hello@causalinsight.in</a>
+          <a href="mailto:srestasocialmedia@gmail.com" class="contact__email">srestasocialmedia@gmail.com</a>
         </div>
-        <p class="contact__micro">No proposal cycle. No retainer until an audit proves it's worth it.</p>
+        <p class="contact__micro">Response within one business day · Confidential — for discussion only</p>
       </div>
     </section>
   </main>
@@ -485,19 +705,21 @@
           </svg>
           <span class="brand__text">Causal<span class="brand__dim">Insight</span></span>
         </span>
-        <p>Bring causal evidence to every rupee a brand spends.</p>
+        <p>Cut discount waste. Grow real sales. Discount optimization, platform-wise ROAS reallocation and data-driven root-cause analysis for consumer brands on quick-commerce.</p>
       </div>
       <nav class="footer__nav" aria-label="Footer">
-        <a href="#gap">The Problem</a>
-        <a href="#answer">What We Answer</a>
+        <a href="#services">Services</a>
+        <a href="#leak">The Leak</a>
+        <a href="#optimizer">The Optimizer</a>
+        <a href="#proof">Proof</a>
         <a href="#method">How It Works</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#engagement">Engagement</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
     <div class="footer__base">
-      <span>© <span id="year">2026</span> Causal Insight Agency</span>
-      <span>Built on open-source causal tooling · independent of any platform</span>
+      <span>© <span id="year">2026</span> Causal Insight</span>
+      <span>Every number recomputed from data weekly · independent of any platform</span>
     </div>
   </footer>
 
