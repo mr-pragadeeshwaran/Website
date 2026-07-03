@@ -6,12 +6,21 @@
 (function () {
   "use strict";
 
+  // signals the inline head fallback that the engine loaded
+  window.__ciEngine = true;
+
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   /* ---------- year ---------- */
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ---------- intro curtain: html.intro decided pre-paint in <head>; just clean up ---------- */
+  const curtain = document.getElementById("curtain");
+  if (curtain) {
+    setTimeout(function () { if (curtain.parentNode) curtain.remove(); }, 2200);
+  }
 
   /* ---------- nav refs ---------- */
   const nav = document.getElementById("nav");
@@ -100,11 +109,38 @@
     });
   }, 3500);
 
-  /* ---------- scroll: nav state, progress, scrollspy ---------- */
-  const spyLinks = Array.prototype.slice.call(document.querySelectorAll(".nav__links a[href^='#']"));
-  const spySections = spyLinks
-    .map(function (a) { return document.querySelector(a.getAttribute("href")); })
-    .filter(Boolean);
+  /* ---------- scroll: nav state, progress, scrollspy (nav links + side dots) ---------- */
+  const spyAnchors = Array.prototype.slice.call(
+    document.querySelectorAll(".nav__links a[href^='#'], .dots a[href^='#']")
+  );
+  const spySections = [];
+  (function () {
+    const seen = {};
+    spyAnchors.forEach(function (a) {
+      const id = a.getAttribute("href");
+      if (seen[id]) return;
+      seen[id] = true;
+      const el = document.querySelector(id);
+      if (el) spySections.push(el);
+    });
+    spySections.sort(function (a, b) { return a.offsetTop - b.offsetTop; });
+  })();
+
+  /* ---------- scroll parallax (writes --py consumed by CSS) ---------- */
+  const pxEls = prefersReduced
+    ? []
+    : Array.prototype.slice.call(document.querySelectorAll("[data-parallax], [data-parallax-var]"));
+  function updateParallax() {
+    if (!pxEls.length) return;
+    const vh = window.innerHeight || 800;
+    for (let i = 0; i < pxEls.length; i++) {
+      const el = pxEls[i];
+      const sp = parseFloat(el.getAttribute("data-parallax") || el.getAttribute("data-parallax-var")) || 0;
+      const r = el.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) continue;
+      el.style.setProperty("--py", ((r.top + r.height / 2 - vh / 2) * sp).toFixed(1));
+    }
+  }
 
   let ticking = false;
   function onScroll() {
@@ -122,9 +158,13 @@
       for (let i = 0; i < spySections.length; i++) {
         if (spySections[i].getBoundingClientRect().top <= 140) current = "#" + spySections[i].id;
       }
-      spyLinks.forEach(function (a) {
-        a.classList.toggle("is-active", a.getAttribute("href") === current);
+      spyAnchors.forEach(function (a) {
+        const active = a.getAttribute("href") === current;
+        a.classList.toggle("is-active", active);
+        if (active) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
       });
+      updateParallax();
       ticking = false;
     });
   }
@@ -160,16 +200,20 @@
     });
   });
 
-  /* ---------- magnetic buttons ---------- */
+  /* ---------- magnetic buttons (custom props so :active press-scale composes) ---------- */
   if (finePointer && !prefersReduced) {
     document.querySelectorAll("[data-magnetic]").forEach(function (btn) {
       btn.addEventListener("mousemove", function (ev) {
         const r = btn.getBoundingClientRect();
         const dx = ev.clientX - (r.left + r.width / 2);
         const dy = ev.clientY - (r.top + r.height / 2);
-        btn.style.transform = "translate(" + (dx * 0.16).toFixed(1) + "px," + (dy * 0.28).toFixed(1) + "px)";
+        btn.style.setProperty("--tx", (dx * 0.16).toFixed(1) + "px");
+        btn.style.setProperty("--ty", (dy * 0.28).toFixed(1) + "px");
       });
-      btn.addEventListener("mouseleave", function () { btn.style.transform = ""; });
+      btn.addEventListener("mouseleave", function () {
+        btn.style.removeProperty("--tx");
+        btn.style.removeProperty("--ty");
+      });
     });
   }
 
@@ -282,6 +326,8 @@
     const mouse = { x: -9999, y: -9999 };
     const GREEN = "21,160,90";
     const GREEN_DEEP = "14,123,67";
+    const spotEl = document.getElementById("heroSpot");
+    let spotX = null, spotY = null;
 
     function resize() {
       w = canvas.clientWidth || canvas.offsetWidth;
@@ -357,6 +403,14 @@
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = "rgba(" + color + ",0.10)";
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3.2, 0, Math.PI * 2); ctx.fill();
+      }
+
+      // cursor-following spotlight glow (lerped for a soft trail)
+      if (spotEl && mouse.x > -999) {
+        spotX = spotX === null ? mouse.x : spotX + (mouse.x - spotX) * 0.08;
+        spotY = spotY === null ? mouse.y : spotY + (mouse.y - spotY) * 0.08;
+        spotEl.style.setProperty("--hx", spotX.toFixed(1) + "px");
+        spotEl.style.setProperty("--hy", spotY.toFixed(1) + "px");
       }
       raf = requestAnimationFrame(draw);
     }

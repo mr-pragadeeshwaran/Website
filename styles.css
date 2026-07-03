@@ -112,6 +112,33 @@ body::before {
   background: linear-gradient(90deg, var(--green), var(--green-deep));
 }
 
+/* ---------- intro curtain (html.intro set pre-paint, once per session) ---------- */
+.curtain {
+  position: fixed; inset: 0; z-index: 300; pointer-events: none;
+  background: var(--bg); display: none; place-items: center;
+  animation: curtainUp .65s var(--ease) .5s forwards;
+}
+.intro .curtain { display: grid; }
+.curtain__mark { width: 58px; height: 58px; color: var(--ink); animation: markIn .45s var(--ease) both; }
+@keyframes markIn { from { opacity: 0; transform: scale(.7) translateY(8px); } }
+@keyframes curtainUp { to { transform: translateY(-101%); visibility: hidden; } }
+
+/* on curtained visits, hold the hero words until the curtain starts lifting */
+.js.intro .hw i { animation-delay: calc(.7s + var(--i, 0) * .075s); }
+.js.intro .hw i.serif { animation-delay: calc(.7s + var(--i, 0) * .075s), 2.4s; }
+
+/* if script.js never arrives, nothing may stay hidden */
+.js-failed .reveal, .js-failed .qw, .js-failed .wb-row {
+  opacity: 1 !important; transform: none !important; filter: none !important;
+}
+.js-failed .curtain { display: none !important; }
+.js-failed .steps::before { transform: scaleX(1); }
+
+/* ---------- scroll parallax (JS sets --py per element) ---------- */
+.js [data-parallax] { transform: translate3d(0, calc(var(--py, 0) * 1px), 0); }
+.js .optimizer[data-parallax-var]::before,
+.js .contact__inner[data-parallax-var]::before { transform: translate3d(0, calc(var(--py, 0) * 1px), 0); }
+
 /* =========================================================
    NAV
    ========================================================= */
@@ -170,6 +197,38 @@ body::before {
 .nav__mobile a:last-child { border: 0; margin-top: 8px; text-align: center; }
 
 /* =========================================================
+   SIDE PROGRESS DOTS
+   ========================================================= */
+.dots {
+  position: fixed; right: 26px; top: 50%; transform: translateY(-50%);
+  z-index: 90; display: flex; flex-direction: column; gap: 13px;
+}
+.dots a {
+  width: 16px; height: 16px; position: relative;
+  display: grid; place-items: center;
+}
+.dots a::before {
+  content: ""; width: 9px; height: 9px; border-radius: 50%;
+  background: #767f79;
+  transition: background .3s, transform .3s var(--ease-spring), box-shadow .3s;
+}
+.dots a:hover::before { background: var(--green); }
+.dots a.is-active::before {
+  background: var(--green); transform: scale(1.4);
+  box-shadow: 0 0 0 4px rgba(21,160,90,.16);
+}
+.dots a::after {
+  content: attr(data-label);
+  position: absolute; right: 24px; top: 50%; transform: translateY(-50%) translateX(6px);
+  font-family: var(--ff-mono); font-size: 11px; white-space: nowrap;
+  background: var(--ink); color: #fff; padding: 5px 11px; border-radius: 7px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s var(--ease), transform .25s var(--ease);
+}
+.dots a:hover::after, .dots a:focus-visible::after { opacity: 1; transform: translateY(-50%) translateX(0); }
+@media (max-width: 1380px) { .dots { display: none; } }
+
+/* =========================================================
    BUTTONS
    ========================================================= */
 .btn {
@@ -207,6 +266,7 @@ body::before {
 
 .btn__arrow { transition: transform .3s var(--ease); }
 .btn:hover .btn__arrow { transform: translateX(4px); }
+.btn:active { transform: translateY(0) scale(.97); }
 
 .nav__cta { background: var(--ink); color: #fff; }
 .nav__cta:hover { transform: translateY(-1px); box-shadow: 0 12px 26px -14px rgba(14,19,17,.55); }
@@ -272,6 +332,16 @@ body::before {
   from { transform: translate(0, 0) scale(1); }
   to   { transform: translate(-46px, 34px) scale(1.08); }
 }
+.hero__spot {
+  position: absolute; z-index: 1; width: 560px; height: 560px;
+  left: 0; top: 0;
+  transform: translate3d(var(--hx, 50vw), var(--hy, 42vh), 0) translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(21,160,90,.11), transparent 60%);
+  filter: blur(30px); pointer-events: none; opacity: 0;
+  transition: opacity .6s var(--ease);
+}
+.hero:hover .hero__spot { opacity: 1; }
+
 .hero__inner { position: relative; z-index: 3; max-width: 1000px; margin: 0 auto; width: 100%; }
 .hero .eyebrow { justify-content: center; }
 
@@ -291,7 +361,20 @@ body::before {
   animation-delay: calc(.18s + var(--i, 0) * .075s);
 }
 @keyframes wordUp { to { transform: translateY(0); } }
-.hw .serif { font-family: var(--ff-serif); font-style: italic; font-weight: 400; color: var(--green); letter-spacing: 0; padding-right: .04em; }
+.hw .serif {
+  font-family: var(--ff-serif); font-style: italic; font-weight: 400;
+  color: var(--green); letter-spacing: 0; padding-right: .04em;
+  background: linear-gradient(100deg, var(--green) 0%, #2eab6f 30%, var(--green-deep) 55%, var(--green) 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 5.5s ease-in-out 2s infinite;
+}
+.js .hw i.serif {
+  animation: wordUp 1s var(--ease) forwards, shimmer 5.5s ease-in-out infinite;
+  animation-delay: calc(.18s + var(--i, 0) * .075s), 2s;
+}
+@keyframes shimmer { 0%, 100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
 
 .hero__sub { font-size: clamp(17px, 2.3vw, 22px); color: var(--muted); max-width: 58ch; margin: 0 auto; line-height: 1.55; }
 .hero__sub strong { color: var(--ink); }
@@ -382,6 +465,21 @@ body::before {
   background: var(--green-tint); border-color: var(--green-line);
   box-shadow: 0 30px 70px -40px rgba(21,160,90,.5);
 }
+/* rotating gradient ring on the flagship card */
+@property --spin { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.svc--flag::after {
+  content: ""; position: absolute; inset: -2px; z-index: 0; border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--spin, 0deg),
+    rgba(21,160,90,0) 0%, rgba(21,160,90,.65) 16%, rgba(59,130,246,.30) 30%, rgba(21,160,90,0) 48%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: ringSpin 7s linear infinite;
+  pointer-events: none;
+}
+@keyframes ringSpin { to { --spin: 360deg; } }
 .svc__kind {
   display: inline-block; align-self: flex-start;
   font-family: var(--ff-mono); font-size: 10.5px; font-weight: 500;
@@ -702,10 +800,40 @@ body::before {
 .proof__foot strong { color: var(--ink); }
 
 /* =========================================================
+   PULL QUOTE
+   ========================================================= */
+.quote { padding-top: 0; text-align: center; }
+.quote__block { max-width: 900px; margin: 0 auto; }
+.quote__text {
+  font-family: var(--ff-serif); font-style: italic; font-weight: 400;
+  font-size: clamp(34px, 5.6vw, 74px); line-height: 1.14; letter-spacing: -.01em;
+  color: var(--ink);
+}
+.qw { display: inline-block; }
+.js .qw { opacity: .1; transition: opacity .7s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+.js .quote.is-visible .qw { opacity: 1; }
+.qw--accent { color: var(--green); }
+.quote__cite {
+  margin-top: 26px; font-size: 15px; color: var(--muted); font-family: var(--ff-body);
+}
+
+/* =========================================================
    METHOD
    ========================================================= */
 .steps { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
-.steps::before { content: ""; position: absolute; top: 27px; left: 6%; right: 6%; height: 2px; background: linear-gradient(90deg, var(--green), var(--green-line)); }
+.steps::before {
+  content: ""; position: absolute; top: 27px; left: 6%; right: 6%; height: 2px;
+  background: linear-gradient(90deg, var(--green), var(--green-line));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1.6s var(--ease) .25s;
+}
+.steps.is-visible::before { transform: scaleX(1); }
+.js .steps.is-visible .step__num { animation: numPop .6s var(--ease-spring) backwards; }
+.js .steps.is-visible .step:nth-child(1) .step__num { animation-delay: .20s; }
+.js .steps.is-visible .step:nth-child(2) .step__num { animation-delay: .45s; }
+.js .steps.is-visible .step:nth-child(3) .step__num { animation-delay: .70s; }
+.js .steps.is-visible .step:nth-child(4) .step__num { animation-delay: .95s; }
+@keyframes numPop { from { opacity: 0; transform: scale(.4); } }
 .step { position: relative; padding: 0 18px; }
 .step:first-child { padding-left: 0; }
 .step:last-child { padding-right: 0; }
@@ -861,6 +989,14 @@ body::before {
 .js :where(.reveal:not(.is-visible)) { opacity: 0; transform: translateY(30px); filter: blur(6px); }
 /* once settled, interactions respond snappily and ignore the entrance stagger delay */
 .js .reveal.is-rested { transition-delay: 0s; transition-duration: .5s; }
+
+/* ol.steps carries data-reveal only as the line/number choreography trigger —
+   its own entrance is neutralized so the li reveals don't stack a double offset */
+.js .steps:not(.is-visible) { opacity: 1; transform: none; filter: none; }
+
+/* magnetic buttons move via custom props so :active press-scale still composes */
+.js [data-magnetic] { transform: translate(var(--tx, 0px), var(--ty, 0px)); }
+.js [data-magnetic]:active { transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(.97); }
 .reveal[data-delay="1"] { transition-delay: .08s; }
 .reveal[data-delay="2"] { transition-delay: .16s; }
 .reveal[data-delay="3"] { transition-delay: .24s; }
@@ -869,15 +1005,23 @@ body::before {
 
 @media (prefers-reduced-motion: reduce) {
   .js .reveal { opacity: 1; transform: none; filter: none; transition: none; }
-  .js .hw i { transform: none; animation: none; }
+  .js .hw i, .js .hw i.serif, .hw .serif { transform: none; animation: none; }
   .js .wb-row, .js .workbook-wrap .wb-row { opacity: 1 !important; transform: none !important; animation: none !important; }
   .finding-card, .grain, .hero__scroll span, .eyebrow__dot, .marquee__track,
   .panel-fx .flow, .panel-fx .pulse, .aurora, .hero__glow,
-  .leak-spike, .finding-card__bars span { animation: none !important; }
+  .finding-card__live span, .workbook__live span,
+  .leak-spike, .finding-card__bars span, .svc--flag::after { animation: none !important; }
   .leak-spike { stroke-dashoffset: 0; }
   .donut__val { transition: none; }
   .timeline::after, .tl__dot { transition: none; }
   .spot::before { display: none; }
+  .curtain, .intro .curtain { display: none; }
+  .hero__spot { display: none; }
+  .hw .serif { background: none; -webkit-text-fill-color: currentColor; color: var(--green); }
+  .js .qw { opacity: 1; transition: none; }
+  .steps::before { transform: scaleX(1); transition: none; }
+  .js .steps.is-visible .step__num { animation: none; }
+  .js [data-parallax] { transform: none; }
 }
 
 /* =========================================================
