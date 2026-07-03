@@ -765,9 +765,9 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="footer__inner">
+    <div class="footer__top">
       <div class="footer__brand">
-        <span class="brand">
+        <a href="#top" class="brand" aria-label="StatIQ Lab home">
           <svg class="brand__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
             <path d="M23 6.5h18" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
             <path d="M26.5 11v10L14.8 44A7 7 0 0 0 21.3 53.6h21.4a7 7 0 0 0 6.5-9.6L37.5 21V11" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -776,21 +776,37 @@
             <rect x="35.4" y="30" width="4.6" height="17" rx="2.3" fill="var(--green, #15a05a)"/>
           </svg>
           <span class="brand__text">StatIQ<span class="brand__dim">&nbsp;Lab</span></span>
-        </span>
+        </a>
+        <p class="footer__pitch">Measured discount decisions for quick-commerce brands.</p>
+        <div class="footer__platforms" aria-label="Live on Blinkit, Zepto and Swiggy Instamart">
+          <span>Live on</span>
+          <img src="assets/blinkit.svg" alt="Blinkit" width="26" height="26" />
+          <img src="assets/zepto.svg" alt="Zepto" width="26" height="26" />
+          <img src="assets/instamart.png" alt="Swiggy Instamart" width="26" height="26" />
+        </div>
       </div>
-      <nav class="footer__nav" aria-label="Footer">
+
+      <nav class="footer__col" aria-label="Explore">
+        <h3 class="footer__heading">Explore</h3>
         <a href="#services">Services</a>
         <a href="#leak">The Leak</a>
         <a href="#optimizer">The Optimizer</a>
         <a href="#proof">Proof</a>
         <a href="#method">How It Works</a>
         <a href="#engagement">Engagement</a>
-        <a href="#contact">Contact</a>
       </nav>
+
+      <div class="footer__col footer__col--cta">
+        <h3 class="footer__heading">Get started</h3>
+        <a class="footer__cta" href="https://calendly.com/mr-pragadeeshwaran/discovery-call" target="_blank" rel="noopener">Book a 30-min call <span aria-hidden="true">→</span></a>
+        <a class="footer__contact" href="mailto:hello@statiqlab.com">hello@statiqlab.com</a>
+        <span class="footer__note">Response within one business day.</span>
+      </div>
     </div>
+
     <div class="footer__base">
-      <span>© <span id="year">2026</span> StatIQ Lab</span>
-      <span><a href="mailto:hello@statiqlab.com" class="footer__mail">hello@statiqlab.com</a> · every number recomputed from data weekly</span>
+      <span>© <span id="year">2026</span> StatIQ Lab. All rights reserved.</span>
+      <span>Every number recomputed from data weekly · independent of any platform</span>
     </div>
   </footer>
 
