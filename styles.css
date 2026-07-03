@@ -303,6 +303,8 @@ section[id] { scroll-margin-top: 84px; }
   color: var(--green-deep); display: inline-flex; align-items: center; gap: 11px;
 }
 .eyebrow__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(21,160,90,.14); animation: pulseDot 2.4s ease-in-out infinite; }
+.eyebrow__logo { width: 21px; height: 21px; border-radius: 6px; display: inline-block; }
+.eyebrow .eyebrow__logo:first-of-type { margin-left: 3px; }
 @keyframes pulseDot { 0%,100% { opacity: 1; transform: scale(1);} 50% { opacity: .5; transform: scale(.7);} }
 
 .num { font-family: var(--ff-mono); font-variant-numeric: tabular-nums; }
@@ -457,6 +459,8 @@ section[id] { scroll-margin-top: 84px; }
 .marquee__group { display: flex; align-items: center; gap: 30px; padding-right: 30px; white-space: nowrap; }
 .marquee__group span { font-family: var(--ff-mono); font-size: 12px; letter-spacing: .1em; color: var(--faint); text-transform: uppercase; }
 .marquee__group i { color: var(--green); font-style: normal; font-size: 10px; opacity: .55; }
+.marquee__brand { display: inline-flex; align-items: center; gap: 9px; }
+.marquee__brand img { width: 20px; height: 20px; border-radius: 6px; }
 
 /* =========================================================
    STATS STRIP
