@@ -172,9 +172,9 @@ body::before {
 .brand__dim { color: var(--green); font-weight: 600; }
 .brand__lockup { display: inline-flex; flex-direction: column; justify-content: center; gap: 3px; }
 .brand__tagline {
-  font-family: var(--ff-serif); font-style: italic; font-weight: 400;
-  font-size: 13px; line-height: 1; color: var(--green-deep);
-  letter-spacing: .01em; white-space: nowrap;
+  font-family: var(--ff-display); font-weight: 500;
+  font-size: 12px; line-height: 1; color: var(--muted);
+  letter-spacing: -.005em; white-space: nowrap;
 }
 
 .nav__links { display: flex; gap: 30px; }
