@@ -412,7 +412,7 @@ section[id] { scroll-margin-top: 84px; }
 }
 @keyframes shimmer { 0%, 100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
 
-.hero__sub { font-size: clamp(17px, 2.3vw, 21px); color: var(--muted); max-width: 54ch; margin: 0 auto; line-height: 1.6; }
+.hero__sub { font-size: clamp(17px, 2.3vw, 21px); color: var(--muted); max-width: 48ch; margin: 0 auto; line-height: 1.6; }
 .hero__sub strong { color: var(--ink); }
 
 .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin: 38px 0 26px; justify-content: center; }
@@ -831,6 +831,43 @@ section[id] { scroll-margin-top: 84px; }
 }
 .proof__foot strong { color: var(--ink); }
 
+/* ---- weekly workbook artifact (spreadsheet screenshot) ---- */
+.workbook-shot { max-width: 900px; margin: clamp(36px, 4.5vw, 56px) auto 0; }
+.workbook-shot__frame {
+  border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden;
+  background: #fff; box-shadow: 0 34px 66px -36px rgba(14,19,17,.30);
+}
+.workbook-shot__bar {
+  display: flex; align-items: center; gap: 7px;
+  padding: 12px 16px; background: var(--bg-soft); border-bottom: 1px solid var(--line);
+}
+.wbs-dot { width: 10px; height: 10px; border-radius: 50%; background: #d4ddd7; }
+.wbs-dot:nth-child(1) { background: #e2705f; }
+.wbs-dot:nth-child(2) { background: #e8c15c; }
+.wbs-dot:nth-child(3) { background: #7fd39a; }
+.workbook-shot__file { margin-left: 10px; font-family: var(--ff-mono); font-size: 12px; color: var(--faint); }
+.workbook-shot__scroll { overflow-x: auto; }
+.workbook-shot__table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 13.5px; }
+.workbook-shot__table th, .workbook-shot__table td { padding: 12px 18px; text-align: left; border-bottom: 1px solid var(--line-soft); white-space: nowrap; }
+.workbook-shot__table thead th { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); background: #fafcfb; }
+.workbook-shot__table tbody td { color: var(--muted); }
+.workbook-shot__table tbody td:first-child { font-weight: 600; color: var(--ink); }
+.workbook-shot__table .num-col { text-align: right; font-family: var(--ff-mono); }
+.workbook-shot__table tbody tr { transition: background .2s; }
+.workbook-shot__table tbody tr:hover { background: #fafcfa; }
+.workbook-shot__table tfoot td { padding: 14px 18px; font-family: var(--ff-mono); font-size: 12.5px; color: var(--muted); background: var(--green-tint); border-top: 1px solid var(--green-line); border-bottom: 0; }
+.workbook-shot__table tfoot .num-col { color: var(--green-deep); font-weight: 600; font-size: 14.5px; }
+.wbs-tag { display: inline-block; font-family: var(--ff-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; border: 1px solid transparent; }
+.wbs-tag--raise  { color: var(--green-deep); background: var(--green-tint); border-color: var(--green-line); }
+.wbs-tag--invest { color: #1c62c9; background: rgba(59,130,246,.10); border-color: rgba(59,130,246,.30); }
+.wbs-tag--hold   { color: var(--faint); background: var(--bg-soft); border-color: var(--line); }
+.wbs-tag--test   { color: var(--amber-text); background: rgba(232,161,60,.12); border-color: rgba(232,161,60,.34); }
+.workbook-shot__cap {
+  margin-top: 18px; font-size: 13.5px; color: var(--muted); line-height: 1.6;
+  text-align: center; max-width: 70ch; margin-inline: auto;
+}
+.workbook-shot__cap strong { color: var(--green-deep); }
+
 /* =========================================================
    PULL QUOTE
    ========================================================= */
@@ -1142,8 +1179,8 @@ section[id] { scroll-margin-top: 84px; }
   .tl__dot { top: 4px; box-shadow: none; transform: scale(1); }
 }
 
-/* hide the floating card before it can overlap the centered hero text */
-@media (max-width: 1200px) {
+/* hide the floating card until there is clearly room beside the centered hero text */
+@media (max-width: 1300px) {
   .finding-card { display: none; }
 }
 
