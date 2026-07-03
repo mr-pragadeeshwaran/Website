@@ -159,9 +159,9 @@ body::before {
   padding: 18px var(--pad);
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
 }
-.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-family: var(--ff-display); }
-.brand__mark { width: 30px; height: 30px; color: var(--green); }
-.brand__text { font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+.brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); font-family: var(--ff-display); }
+.brand__mark { width: 37px; height: 37px; color: var(--green); }
+.brand__text { font-size: 23.5px; font-weight: 600; letter-spacing: -.01em; }
 .brand__dim { color: var(--ink); font-weight: 500; }
 
 .nav__links { display: flex; gap: 30px; }
@@ -1030,6 +1030,8 @@ body::before {
 @media (max-width: 1120px) {
   .nav__links { gap: 20px; }
   .nav__links a { font-size: 13.5px; }
+  .brand__mark { width: 31px; height: 31px; }
+  .brand__text { font-size: 20.5px; }
 }
 
 @media (max-width: 1080px) {
