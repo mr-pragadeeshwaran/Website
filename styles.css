@@ -897,6 +897,30 @@ section[id] { scroll-margin-top: 84px; }
 .cmp tbody .cmp__us { border-bottom-color: var(--green-line); }
 
 /* =========================================================
+   ABOUT / BRAND
+   ========================================================= */
+.about__grid {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: clamp(36px, 5vw, 72px); align-items: center;
+}
+.about__intro .section__title { margin-top: 18px; }
+.about__intro .section__lead { margin-top: 4px; }
+.about__vm { display: grid; gap: 18px; }
+.vm-card {
+  padding: 28px 30px; border: 1px solid var(--line); border-radius: var(--radius-lg);
+  background: var(--surface);
+  transition: transform .4s var(--ease), border-color .4s, box-shadow .4s;
+}
+.vm-card:hover { transform: translateY(-5px); border-color: var(--green-line); box-shadow: 0 26px 48px -32px rgba(14,19,17,.22); }
+.vm-card__label {
+  display: inline-block; font-family: var(--ff-mono); font-size: 11.5px;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--green-deep);
+  margin-bottom: 14px; padding: 5px 13px; border-radius: 999px;
+  background: var(--green-tint); border: 1px solid var(--green-line);
+}
+.vm-card p { font-size: 15.5px; color: var(--text); line-height: 1.6; }
+
+/* =========================================================
    ENGAGEMENT (timeline)
    ========================================================= */
 .timeline { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; position: relative; padding-top: 10px; }
@@ -1089,6 +1113,7 @@ section[id] { scroll-margin-top: 84px; }
   .optimizer__grid { grid-template-columns: 1fr; gap: 44px; }
   .proof__grid { grid-template-columns: 1fr; gap: 52px; }
   .donut-wrap { margin: 0 auto; }
+  .about__grid { grid-template-columns: 1fr; gap: 40px; }
 }
 
 /* nav collapses to hamburger earlier now that it carries six links */
