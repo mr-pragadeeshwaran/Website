@@ -1,5 +1,5 @@
 /* =========================================================
-   Causal Insight — Discount Optimizer site interactions
+   StatIQ Lab — Discount Optimizer site interactions
    Reveal engine: IntersectionObserver with scroll fallback and
    a safety net so content is never left hidden.
    ========================================================= */
