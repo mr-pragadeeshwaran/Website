@@ -7,3 +7,9 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Private project material — kept LOCAL only, not pushed to the public
+# website repo. The public repo needs just the deployable site in /website.
+# Delete a line below if you deliberately want it version-controlled.
+/brand/
+/docs/

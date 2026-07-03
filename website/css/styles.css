@@ -834,8 +834,17 @@ section[id] { scroll-margin-top: 84px; }
 /* ---- weekly workbook artifact (spreadsheet screenshot) ---- */
 .workbook-shot { max-width: 900px; margin: clamp(36px, 4.5vw, 56px) auto 0; }
 .workbook-shot__frame {
+  position: relative;
   border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden;
   background: #fff; box-shadow: 0 34px 66px -36px rgba(14,19,17,.30);
+}
+/* on narrow screens the table scrolls sideways - fade the right edge to hint it */
+@media (max-width: 640px) {
+  .workbook-shot__frame::after {
+    content: ""; position: absolute; top: 46px; right: 0; bottom: 0; width: 42px; z-index: 2;
+    background: linear-gradient(90deg, rgba(255,255,255,0), #fff 78%);
+    pointer-events: none;
+  }
 }
 .workbook-shot__bar {
   display: flex; align-items: center; gap: 7px;
