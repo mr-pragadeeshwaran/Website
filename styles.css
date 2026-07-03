@@ -303,8 +303,18 @@ section[id] { scroll-margin-top: 84px; }
   color: var(--green-deep); display: inline-flex; align-items: center; gap: 11px;
 }
 .eyebrow__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(21,160,90,.14); animation: pulseDot 2.4s ease-in-out infinite; }
-.eyebrow__logo { width: 30px; height: 30px; border-radius: 8px; display: inline-block; box-shadow: 0 1px 3px rgba(14,19,17,.14); }
-.eyebrow .eyebrow__logo:first-of-type { margin-left: 4px; }
+.eyebrow__logo {
+  width: 36px; height: 36px; border-radius: 9px; display: inline-block;
+  box-shadow: 0 4px 10px -2px rgba(14,19,17,.20);
+  transition: box-shadow .3s var(--ease), filter .3s var(--ease);
+  animation: logoFloat 3.6s ease-in-out infinite;
+  will-change: transform;
+}
+.eyebrow .eyebrow__logo:first-of-type { margin-left: 5px; }
+.eyebrow .eyebrow__logo:nth-of-type(2) { animation-delay: .45s; }
+.eyebrow .eyebrow__logo:nth-of-type(3) { animation-delay: .9s; }
+.eyebrow__logo:hover { box-shadow: 0 12px 22px -6px rgba(14,19,17,.30); filter: brightness(1.05); }
+@keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 @keyframes pulseDot { 0%,100% { opacity: 1; transform: scale(1);} 50% { opacity: .5; transform: scale(.7);} }
 
 .num { font-family: var(--ff-mono); font-variant-numeric: tabular-nums; }
@@ -459,8 +469,8 @@ section[id] { scroll-margin-top: 84px; }
 .marquee__group { display: flex; align-items: center; gap: 30px; padding-right: 30px; white-space: nowrap; }
 .marquee__group span { font-family: var(--ff-mono); font-size: 12px; letter-spacing: .1em; color: var(--faint); text-transform: uppercase; }
 .marquee__group i { color: var(--green); font-style: normal; font-size: 10px; opacity: .55; }
-.marquee__brand { display: inline-flex; align-items: center; gap: 10px; }
-.marquee__brand img { width: 28px; height: 28px; border-radius: 7px; }
+.marquee__brand { display: inline-flex; align-items: center; gap: 11px; }
+.marquee__brand img { width: 31px; height: 31px; border-radius: 8px; box-shadow: 0 2px 6px -2px rgba(14,19,17,.16); }
 
 /* =========================================================
    STATS STRIP
@@ -1027,7 +1037,7 @@ section[id] { scroll-margin-top: 84px; }
   .js .wb-row, .js .workbook-wrap .wb-row { opacity: 1 !important; transform: none !important; animation: none !important; }
   .finding-card, .grain, .hero__scroll span, .eyebrow__dot, .marquee__track,
   .panel-fx .flow, .panel-fx .pulse, .aurora, .hero__glow,
-  .finding-card__live span, .workbook__live span,
+  .finding-card__live span, .workbook__live span, .eyebrow__logo,
   .leak-spike, .finding-card__bars span, .svc--flag::after { animation: none !important; }
   .leak-spike { stroke-dashoffset: 0; }
   .donut__val { transition: none; }
