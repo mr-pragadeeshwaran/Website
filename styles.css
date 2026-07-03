@@ -168,8 +168,14 @@ body::before {
 }
 .brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); font-family: var(--ff-display); }
 .brand__mark { width: 37px; height: 37px; color: var(--ink); }
-.brand__text { font-size: 23.5px; font-weight: 600; letter-spacing: -.01em; }
+.brand__text { font-size: 23.5px; font-weight: 600; letter-spacing: -.01em; line-height: 1; }
 .brand__dim { color: var(--green); font-weight: 600; }
+.brand__lockup { display: inline-flex; flex-direction: column; justify-content: center; gap: 3px; }
+.brand__tagline {
+  font-family: var(--ff-serif); font-style: italic; font-weight: 400;
+  font-size: 13px; line-height: 1; color: var(--green-deep);
+  letter-spacing: .01em; white-space: nowrap;
+}
 
 .nav__links { display: flex; gap: 30px; }
 .nav__links a {
@@ -1169,4 +1175,6 @@ section[id] { scroll-margin-top: 84px; }
   .steps { grid-template-columns: 1fr; }
   .hero__cta { flex-direction: column; align-items: stretch; }
   .hero__cta .btn { justify-content: center; }
+  /* keep the small-phone nav to just the logo */
+  .nav__inner .brand__tagline { display: none; }
 }
