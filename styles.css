@@ -504,14 +504,6 @@ section[id] { scroll-margin-top: 84px; }
   pointer-events: none;
 }
 @keyframes ringSpin { to { --spin: 360deg; } }
-.svc__kind {
-  display: inline-block; align-self: flex-start;
-  font-family: var(--ff-mono); font-size: 10.5px; font-weight: 500;
-  letter-spacing: .1em; text-transform: uppercase;
-  padding: 5px 12px; border-radius: 999px; margin-bottom: 22px;
-  background: var(--green-deep); color: #fff;
-}
-.svc__kind--alt { background: var(--bg-soft); color: var(--faint); border: 1px solid var(--line); }
 .svc__icon { width: 48px; height: 48px; color: var(--green); margin-bottom: 18px; }
 .svc__icon svg { width: 100%; height: 100%; }
 .svc h3 { font-family: var(--ff-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em; color: var(--ink); margin-bottom: 10px; line-height: 1.25; }
