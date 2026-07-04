@@ -1072,10 +1072,12 @@ section[id] { scroll-margin-top: 84px; }
 .footer__pitch { font-size: 14.5px; color: var(--muted); line-height: 1.55; margin-top: 14px; }
 
 .footer__nav {
-  display: flex; flex-wrap: wrap; align-items: center;
-  gap: 12px 30px; max-width: 560px; padding-top: 6px;
+  display: grid; grid-auto-flow: column;
+  grid-template-rows: repeat(4, auto);
+  gap: 14px 56px; align-content: start; padding-top: 2px;
 }
 .footer__nav a {
+  justify-self: start;
   font-size: 14.5px; color: var(--muted); position: relative;
   transition: color .25s var(--ease);
 }
@@ -1213,7 +1215,7 @@ section[id] { scroll-margin-top: 84px; }
   .footer__top { gap: 26px; }
   .footer__base { flex-direction: column; gap: 10px; }
   /* give footer links a taller touch area on phones */
-  .footer__nav { gap: 6px 26px; }
+  .footer__nav { gap: 4px 44px; }
   .footer__nav a { padding: 8px 0; }
   .workbook__cols { grid-template-columns: 1.4fr 1fr 66px; }
   .workbook__cols span:nth-child(3) { display: none; }
