@@ -19,7 +19,7 @@ Plain **HTML + CSS + vanilla JavaScript** — no build step, no dependencies.
 | `assets/og.png` | Social share (Open Graph) image |
 | `assets/partners/` | Blinkit, Zepto, Instamart logos shown on the page |
 
-Fonts: General Sans (headings), Inter (body), JetBrains Mono (data labels) — loaded via CDN.
+Fonts: General Sans (headings + body), Instrument Serif (rationed accents), JetBrains Mono (data labels) — loaded via CDN.
 
 ## Deployment
 

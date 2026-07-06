@@ -22,7 +22,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "StatIQ Lab",
+    "description": "Data-driven discount optimization for consumer brands on Blinkit, Zepto and Instamart.",
+    "url": "https://mr-pragadeeshwaran.github.io/Website/",
+    "email": "hello@statiqlab.com",
+    "logo": "https://mr-pragadeeshwaran.github.io/Website/assets/og.png",
+    "areaServed": "IN",
+    "knowsAbout": ["Discount optimization", "Causal inference", "Quick commerce", "Marketing mix analytics"]
+  }
+  </script>
 
   <link rel="stylesheet" href="css/styles.css" />
   <script>
@@ -85,7 +99,7 @@
         <a href="#engagement">Engagement</a>
       </nav>
 
-      <a href="https://calendly.com/mr-pragadeeshwaran/discovery-call" target="_blank" rel="noopener" class="btn btn--sm nav__cta" data-magnetic>Book a 30-min call <span class="btn__arrow" aria-hidden="true">→</span></a>
+      <a href="https://calendly.com/mr-pragadeeshwaran/discovery-call" target="_blank" rel="noopener" class="btn btn--sm nav__cta">Book a 30-min call <span class="btn__arrow" aria-hidden="true">→</span></a>
 
       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -120,18 +134,6 @@
     <section class="hero">
       <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
       <div class="hero__glow" aria-hidden="true"></div>
-      <div class="hero__glow hero__glow--left" aria-hidden="true"></div>
-      <div class="hero__spot" id="heroSpot" aria-hidden="true"></div>
-      <svg class="hero__lines" data-parallax="0.10" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <g fill="none" stroke="currentColor" stroke-width="1.5">
-          <polyline points="0,170 130,170 210,100 210,18" />
-          <polyline points="0,540 95,540 175,620 340,620" />
-          <polyline points="-10,330 70,330 70,250 240,250 300,310" />
-          <polyline points="1440,150 1310,150 1230,230 1230,380" />
-          <polyline points="1440,650 1330,650 1250,560 1070,560" />
-          <polyline points="1450,360 1360,360 1360,440 1200,440" />
-        </g>
-      </svg>
 
       <div class="hero__inner">
         <p class="eyebrow reveal" data-reveal>
@@ -162,7 +164,7 @@
         </p>
 
         <div class="hero__cta reveal" data-reveal data-delay="4">
-          <a href="https://calendly.com/mr-pragadeeshwaran/discovery-call" target="_blank" rel="noopener" class="btn btn--primary" data-magnetic>Book a 30-min call <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a href="https://calendly.com/mr-pragadeeshwaran/discovery-call" target="_blank" rel="noopener" class="btn btn--primary">Book a 30-min call <span class="btn__arrow" aria-hidden="true">→</span></a>
           <a href="#optimizer" class="btn btn--ghost">See the offer <span class="btn__arrow" aria-hidden="true">→</span></a>
         </div>
 
@@ -173,7 +175,7 @@
       </div>
 
       <!-- floating sample-finding card -->
-      <aside class="finding-card reveal spot tilt" data-reveal data-delay="5" aria-hidden="true">
+      <aside class="finding-card reveal" data-reveal data-delay="5" aria-hidden="true">
         <div class="finding-card__head">
           <span class="finding-card__tag">LIVE DEPLOYMENT</span>
           <span class="finding-card__live"><span></span>recomputed weekly</span>
@@ -199,22 +201,20 @@
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
         <div class="marquee__group">
-          <span class="marquee__brand"><img src="assets/partners/blinkit.svg" alt="" width="31" height="31" />Blinkit</span><i>✦</i>
-          <span class="marquee__brand"><img src="assets/partners/zepto.svg" alt="" width="31" height="31" />Zepto</span><i>✦</i>
-          <span class="marquee__brand"><img src="assets/partners/instamart.png" alt="" width="31" height="31" />Instamart</span><i>✦</i>
-          <span>Discount optimization</span><i>✦</i><span>ROAS reallocation</span><i>✦</i>
-          <span>Root-cause analysis</span><i>✦</i><span>Every Monday</span><i>✦</i>
-          <span>Safety-capped moves</span><i>✦</i><span>Scorecard-verified</span><i>✦</i>
-          <span>Verdict in week 1</span><i>✦</i>
+          <span><b>₹1.76L / month</b> recovered on 4 products</span><i>✦</i>
+          <span><b>87%</b> accuracy on unseen data</span><i>✦</i>
+          <span>warned <b>−13.8%</b> · reality <b>−8.8%</b></span><i>✦</i>
+          <span>verdict in <b>week 1</b></span><i>✦</i>
+          <span><b>11 cities</b> live on Blinkit</span><i>✦</i>
+          <span>recomputed <b>every Monday</b></span><i>✦</i>
         </div>
         <div class="marquee__group">
-          <span class="marquee__brand"><img src="assets/partners/blinkit.svg" alt="" width="31" height="31" />Blinkit</span><i>✦</i>
-          <span class="marquee__brand"><img src="assets/partners/zepto.svg" alt="" width="31" height="31" />Zepto</span><i>✦</i>
-          <span class="marquee__brand"><img src="assets/partners/instamart.png" alt="" width="31" height="31" />Instamart</span><i>✦</i>
-          <span>Discount optimization</span><i>✦</i><span>ROAS reallocation</span><i>✦</i>
-          <span>Root-cause analysis</span><i>✦</i><span>Every Monday</span><i>✦</i>
-          <span>Safety-capped moves</span><i>✦</i><span>Scorecard-verified</span><i>✦</i>
-          <span>Verdict in week 1</span><i>✦</i>
+          <span><b>₹1.76L / month</b> recovered on 4 products</span><i>✦</i>
+          <span><b>87%</b> accuracy on unseen data</span><i>✦</i>
+          <span>warned <b>−13.8%</b> · reality <b>−8.8%</b></span><i>✦</i>
+          <span>verdict in <b>week 1</b></span><i>✦</i>
+          <span><b>11 cities</b> live on Blinkit</span><i>✦</i>
+          <span>recomputed <b>every Monday</b></span><i>✦</i>
         </div>
       </div>
     </div>
@@ -223,20 +223,24 @@
     <section class="stats" id="stats">
       <div class="stats__grid">
         <div class="stat reveal" data-reveal>
+          <span class="stat__kick">Proven live</span>
           <span class="stat__num"><span class="num" data-count="10" data-suffix="%">0%</span></span>
-          <p class="stat__label">of discount spend proved <strong>recoverable</strong> on a live deployment - waste you can take home</p>
+          <p class="stat__label">of discount spend proved <strong>recoverable</strong> on a live deployment</p>
         </div>
-        <div class="stat reveal" data-reveal data-delay="1">
+        <div class="stat stat--hero reveal" data-reveal data-delay="1">
+          <span class="stat__kick">Per month</span>
           <span class="stat__num"><span class="num" data-count="1.76" data-decimals="2" data-prefix="₹" data-suffix="L">₹0L</span></span>
-          <p class="stat__label">per month of recoverable waste found on <strong>just 4 products</strong></p>
+          <p class="stat__label">of recoverable waste found on <strong>just 4 products</strong></p>
         </div>
         <div class="stat reveal" data-reveal data-delay="2">
+          <span class="stat__kick">Unseen data</span>
           <span class="stat__num"><span class="num" data-count="87" data-suffix="%">0%</span></span>
-          <p class="stat__label">of sales response explained on data the model had <strong>never seen</strong></p>
+          <p class="stat__label">of sales response explained <strong>out of sample</strong></p>
         </div>
         <div class="stat reveal" data-reveal data-delay="3">
+          <span class="stat__kick">Your time</span>
           <span class="stat__num"><span class="num" data-count="1" data-suffix="&nbsp;hr">0&nbsp;hr</span></span>
-          <p class="stat__label">of your team's time per week - <strong>the rest is done for you</strong></p>
+          <p class="stat__label">per week - <strong>the rest is done for you</strong></p>
         </div>
       </div>
     </section>
@@ -256,7 +260,8 @@
       </div>
 
       <div class="svc-grid" data-stagger>
-        <article class="svc svc--flag spot reveal" data-reveal>
+        <article class="svc svc--flag reveal" data-reveal>
+          <span class="svc__tag">Flagship</span>
           <div class="svc__icon" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none">
               <rect x="6" y="8" width="36" height="34" rx="5" stroke="currentColor" stroke-width="2.4"/>
@@ -272,7 +277,7 @@
           <a class="svc__link" href="#optimizer">See the full offer <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="svc spot reveal" data-reveal data-delay="1">
+        <article class="svc reveal" data-reveal data-delay="1">
           <div class="svc__icon" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none">
               <path d="M6 40C14 40 14 12 24 12s10 24 18 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
@@ -287,7 +292,7 @@
           <a class="svc__link" href="mailto:hello@statiqlab.com?subject=ROAS%20reallocation%20enquiry">Ask about ROAS <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="svc spot reveal" data-reveal data-delay="2">
+        <article class="svc reveal" data-reveal data-delay="2">
           <div class="svc__icon" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none">
               <circle cx="21" cy="21" r="13" stroke="currentColor" stroke-width="2.4"/>
@@ -318,7 +323,7 @@
       </div>
 
       <div class="leaks" data-stagger>
-        <article class="leak-card spot reveal" data-reveal>
+        <article class="leak-card reveal" data-reveal>
           <div class="leak-card__viz leak-card__viz--subsidy" aria-hidden="true">
             <span style="--h:82%"></span><span style="--h:70%"></span><span style="--h:88%"></span>
             <span style="--h:76%"></span><span style="--h:84%"></span><span style="--h:72%"></span>
@@ -328,7 +333,7 @@
           <p>Your regular buyer doesn't need 20% off. That discount is margin gone for zero extra volume.</p>
         </article>
 
-        <article class="leak-card spot reveal" data-reveal data-delay="1">
+        <article class="leak-card reveal" data-reveal data-delay="1">
           <div class="leak-card__viz" aria-hidden="true">
             <svg viewBox="0 0 220 64" fill="none" preserveAspectRatio="none">
               <path class="leak-spike" d="M0 46 L36 44 L62 42 L84 12 L104 8 L122 40 L142 56 L164 54 L192 48 L220 46"
@@ -341,7 +346,7 @@
           <p>Deep promos pull next month's sales into this month. The spike looks great; the dip cancels it.</p>
         </article>
 
-        <article class="leak-card spot reveal" data-reveal data-delay="2">
+        <article class="leak-card reveal" data-reveal data-delay="2">
           <div class="leak-card__viz leak-card__viz--swap" aria-hidden="true">
             <div class="swap-bar swap-bar--up"><b></b><label>1L</label></div>
             <span class="swap-arrow">⇄</span>
@@ -359,7 +364,7 @@
     </section>
 
     <!-- ===== THE OPTIMIZER (primary offer, dark panel) ===== -->
-    <section class="section section--dark optimizer" id="optimizer" data-parallax-var="0.06">
+    <section class="section section--dark optimizer" id="optimizer">
       <div class="aurora" aria-hidden="true"></div>
       <div class="optimizer__head">
         <h2 class="section__title reveal" data-reveal>
@@ -426,19 +431,19 @@
 
         <!-- the four actions -->
         <div class="actions4" data-stagger>
-          <article class="action4 spot reveal" data-reveal>
+          <article class="action4 reveal" data-reveal>
             <span class="action4__chip chip chip--raise">Raise</span>
             <p>Price up in small steps where shoppers were buying anyway. Margin comes home.</p>
           </article>
-          <article class="action4 spot reveal" data-reveal data-delay="1">
+          <article class="action4 reveal" data-reveal data-delay="1">
             <span class="action4__chip chip chip--invest">Invest</span>
             <p>Redirect the savings to where deeper discounts genuinely create new volume.</p>
           </article>
-          <article class="action4 spot reveal" data-reveal data-delay="2">
+          <article class="action4 reveal" data-reveal data-delay="2">
             <span class="action4__chip chip chip--hold">Hold</span>
             <p>Where the discount is earning its keep, nothing changes.</p>
           </article>
-          <article class="action4 spot reveal" data-reveal data-delay="3">
+          <article class="action4 reveal" data-reveal data-delay="3">
             <span class="action4__chip chip chip--test">Test</span>
             <p>Where evidence is thin, a small price test builds it - no guessing.</p>
           </article>
@@ -531,22 +536,22 @@
         </div>
 
         <div class="proof__cards" data-stagger>
-          <article class="proof-card spot reveal" data-reveal>
+          <article class="proof-card reveal" data-reveal>
             <span class="proof-card__big"><span class="num" data-count="1.76" data-decimals="2" data-prefix="₹" data-suffix="L">₹0L</span> <em>/ month</em></span>
             <h3>Waste found on just 4 products</h3>
             <p>Measured, not estimated - every rupee tied to a product and a city.</p>
           </article>
-          <article class="proof-card spot reveal" data-reveal data-delay="1">
+          <article class="proof-card reveal" data-reveal data-delay="1">
             <span class="proof-card__big"><span class="num" data-count="87" data-suffix="%">0%</span></span>
             <h3>Of sales response explained on unseen data</h3>
             <p>Labelled “moderate” by the system itself - never rounded up.</p>
           </article>
-          <article class="proof-card spot reveal" data-reveal data-delay="2">
+          <article class="proof-card reveal" data-reveal data-delay="2">
             <span class="proof-card__big">Cautious</span>
             <h3>Warned of −13.8% volume; reality was −8.8%</h3>
             <p>Its warnings overstate risk - following it is safer than it sounds.</p>
           </article>
-          <article class="proof-card spot reveal" data-reveal data-delay="3">
+          <article class="proof-card reveal" data-reveal data-delay="3">
             <span class="proof-card__big">“Not enough data”</span>
             <h3>Is an answer it's allowed to give</h3>
             <p>Weak evidence gets flagged for testing - not guessed at.</p>
@@ -557,8 +562,9 @@
       <figure class="workbook-shot reveal" data-reveal>
         <div class="workbook-shot__frame">
           <div class="workbook-shot__bar" aria-hidden="true">
-            <span class="wbs-dot"></span><span class="wbs-dot"></span><span class="wbs-dot"></span>
+            <span class="wbs-badge">XLSX</span>
             <span class="workbook-shot__file">Monday-workbook · Week 27.xlsx</span>
+            <span class="workbook-shot__meta">Sheet 1 of 4 · Actions</span>
           </div>
           <div class="workbook-shot__scroll">
             <table class="workbook-shot__table">
@@ -706,7 +712,19 @@
       </div>
     </section>
 
-    <!-- ===== ABOUT / BRAND ===== -->
+    <!-- ===== TESTIMONIAL ===== -->
+    <section class="section testimonial reveal" data-reveal aria-label="Client words">
+      <blockquote class="testimonial__block">
+        <p class="testimonial__text">
+          “We stopped arguing about discounts in week two.
+          <em>The Monday sheet ends the debate</em> - it's the one document
+          everyone trusts.”
+        </p>
+        <p class="testimonial__cite">Founder · 4-product organic staples brand · name withheld under NDA</p>
+      </blockquote>
+    </section>
+
+    <!-- ===== ABOUT / FOUNDER ===== -->
     <section class="section about" id="about">
       <div class="about__grid">
         <div class="about__intro">
@@ -715,22 +733,37 @@
             Your data speaks. <em>We translate.</em>
           </h2>
           <p class="section__lead reveal" data-reveal data-delay="2">
-            StatIQ Lab is a data analytics company that helps brands make better decisions.
-            We combine statistics and advanced analytical methods to extract insights from large,
-            multi-source data - and turn them into actions that drive revenue and growth.
+            StatIQ Lab is a boutique analytics practice: statistics and causal methods,
+            applied to your own sales data, returned as rupee-denominated decisions.
+            No dashboards to babysit, no black box - every recommendation arrives with
+            its evidence attached.
+          </p>
+          <p class="about__vision reveal" data-reveal data-delay="3">
+            The aim: a world where no brand leaves growth to guesswork.
           </p>
         </div>
 
-        <div class="about__vm">
-          <article class="vm-card spot reveal" data-reveal>
-            <span class="vm-card__label">Vision</span>
-            <p>A world where no brand leaves growth to guesswork - where every business decision is backed by evidence.</p>
-          </article>
-          <article class="vm-card spot reveal" data-reveal data-delay="1">
-            <span class="vm-card__label">Mission</span>
-            <p>To turn large, scattered, hard-to-read data into clear, statistically proven actions - finding the insights that drive revenue and growth for our clients.</p>
-          </article>
-        </div>
+        <article class="founder reveal" data-reveal data-delay="1">
+          <div class="founder__head">
+            <!-- TODO: replace initials with <img src="assets/founder.jpg" alt="Pragadeeshwaran, founder of StatIQ Lab" /> -->
+            <span class="founder__photo" aria-hidden="true">P</span>
+            <div>
+              <h3 class="founder__name">Pragadeeshwaran</h3>
+              <span class="founder__role">Founder · Causal Analytics</span>
+            </div>
+          </div>
+          <p class="founder__bio">
+            <!-- TODO: tighten with real credentials (degree, past roles, years) -->
+            Builder of the Discount Optimizer and the statistical engine behind it.
+            Works hands-on with every client's data - <strong>the person on the Monday
+            call is the person who ran the numbers.</strong>
+          </p>
+          <div class="founder__links">
+            <!-- TODO: confirm LinkedIn URL -->
+            <a href="https://www.linkedin.com/in/mr-pragadeeshwaran" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="mailto:hello@statiqlab.com">hello@statiqlab.com</a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -780,10 +813,58 @@
       </p>
     </section>
 
+    <!-- ===== FAQ ===== -->
+    <section class="section faq" id="faq" aria-label="Frequently asked questions">
+      <div class="section__head">
+        <p class="eyebrow reveal" data-reveal><span class="eyebrow__dot"></span>Before you ask</p>
+        <h2 class="section__title reveal" data-reveal data-delay="1">
+          The questions every brand asks <em>first.</em>
+        </h2>
+      </div>
+      <div class="faq__list reveal" data-reveal data-delay="2">
+        <details class="faq__item">
+          <summary>Is our sales data safe with you?</summary>
+          <p>Yes. We sign an NDA before any data moves, work on read-only exports you control,
+             and never share, resell or benchmark your data against other clients.
+             Everything we build from it - models, scorecards, workbooks - <strong>stays yours.</strong></p>
+        </details>
+        <details class="faq__item">
+          <summary>What do you need from us to start?</summary>
+          <p>One daily sales export per product per city (6+ months of history) and your brand
+             names on each platform. No access to your ad accounts or seller panels is required.
+             Setup takes about a day.</p>
+        </details>
+        <details class="faq__item">
+          <summary>What if our data isn't good enough?</summary>
+          <p>Then we tell you in week one and stop - that's the point of the up-front data check.
+             You'll know exactly what's missing and how to start capturing it. <strong>You pay for
+             answers, not for effort.</strong></p>
+        </details>
+        <details class="faq__item">
+          <summary>Will this break our promo calendar or platform relationships?</summary>
+          <p>No. Moves are capped at roughly 3 percentage points a week, only to prices your
+             product has already sold at in that city, and nothing changes without your approval
+             at the Monday review.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Why not just build this in-house?</summary>
+          <p>You can - it typically takes a data hire 3–6 months to get to a first trustworthy
+             model, unaudited. This service gives you a verdict in week one and grades its own
+             predictions publicly every week. Many clients use it to <strong>de-risk the
+             in-house build</strong> they do later.</p>
+        </details>
+        <details class="faq__item">
+          <summary>How is the engagement priced?</summary>
+          <p>Commercials are agreed on the first call and structured so the fee funds itself
+             out of documented recovered waste - if the scorecard doesn't show the savings,
+             you have every reason (and the evidence) to walk away at month three.</p>
+        </details>
+      </div>
+    </section>
+
     <!-- ===== CONTACT / CTA ===== -->
     <section class="section contact" id="contact">
-      <div class="contact__inner reveal" data-reveal data-parallax-var="0.06">
-        <div class="aurora" aria-hidden="true"></div>
+      <div class="contact__inner reveal" data-reveal>
         <svg class="panel-fx" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <g class="fx-links">
             <line x1="140" y1="130" x2="360" y2="90"/><line x1="360" y1="90" x2="540" y2="210"/>
@@ -817,7 +898,7 @@
           If the data isn't enough, we say so - and you've lost nothing.
         </p>
         <div class="contact__cta">
-          <a href="https://calendly.com/mr-pragadeeshwaran/discovery-call" target="_blank" rel="noopener" class="btn btn--primary btn--lg" data-magnetic>
+          <a href="https://calendly.com/mr-pragadeeshwaran/discovery-call" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
             Book a 30-min call <span class="btn__arrow" aria-hidden="true">→</span>
           </a>
           <a href="mailto:hello@statiqlab.com" class="contact__email">hello@statiqlab.com</a>
@@ -844,20 +925,33 @@
         <p class="footer__pitch">Your data speaks. We translate.</p>
       </div>
 
-      <nav class="footer__nav" aria-label="Explore">
-        <a href="#services">Services</a>
-        <a href="#leak">The Leak</a>
-        <a href="#optimizer">The Optimizer</a>
-        <a href="#proof">Proof</a>
-        <a href="#method">How It Works</a>
-        <a href="#about">About</a>
-        <a href="#engagement">Engagement</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="footer__col">
+        <span class="footer__head">Contact</span>
+        <a href="mailto:hello@statiqlab.com">hello@statiqlab.com</a>
+        <!-- TODO: confirm LinkedIn URL and city -->
+        <a href="https://www.linkedin.com/in/mr-pragadeeshwaran" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://calendly.com/mr-pragadeeshwaran/discovery-call" target="_blank" rel="noopener">Book a call ↗</a>
+        <span>India · works with brands everywhere</span>
+      </div>
+
+      <div class="footer__col">
+        <span class="footer__head">Explore</span>
+        <nav class="footer__nav" aria-label="Explore">
+          <a href="#services">Services</a>
+          <a href="#leak">The Leak</a>
+          <a href="#optimizer">The Optimizer</a>
+          <a href="#proof">Proof</a>
+          <a href="#method">How It Works</a>
+          <a href="#about">About</a>
+          <a href="#engagement">Engagement</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
     </div>
 
     <div class="footer__base">
       <span>© <span id="year">2026</span> StatIQ Lab. All rights reserved.</span>
+      <span>Every number on this page comes from a live deployment - details shared on the call.</span>
     </div>
   </footer>
 

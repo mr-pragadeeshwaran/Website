@@ -200,35 +200,7 @@
     });
   });
 
-  /* ---------- magnetic buttons (custom props so :active press-scale composes) ---------- */
-  if (finePointer && !prefersReduced) {
-    document.querySelectorAll("[data-magnetic]").forEach(function (btn) {
-      btn.addEventListener("mousemove", function (ev) {
-        const r = btn.getBoundingClientRect();
-        const dx = ev.clientX - (r.left + r.width / 2);
-        const dy = ev.clientY - (r.top + r.height / 2);
-        btn.style.setProperty("--tx", (dx * 0.16).toFixed(1) + "px");
-        btn.style.setProperty("--ty", (dy * 0.28).toFixed(1) + "px");
-      });
-      btn.addEventListener("mouseleave", function () {
-        btn.style.removeProperty("--tx");
-        btn.style.removeProperty("--ty");
-      });
-    });
-  }
-
-  /* ---------- spotlight cards (cursor-following highlight) ---------- */
-  if (finePointer && !prefersReduced) {
-    document.querySelectorAll(".spot").forEach(function (card) {
-      card.addEventListener("pointermove", function (ev) {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", (ev.clientX - r.left) + "px");
-        card.style.setProperty("--my", (ev.clientY - r.top) + "px");
-      });
-    });
-  }
-
-  /* ---------- 3D tilt ---------- */
+  /* ---------- 3D tilt (workbook only) ---------- */
   if (finePointer && !prefersReduced) {
     document.querySelectorAll(".tilt").forEach(function (el) {
       const MAX = 5; // degrees
@@ -264,25 +236,7 @@
 
     function tickRow() {
       const row = rows[idx];
-      const action = row.getAttribute("data-action");
       row.classList.add("is-updating");
-
-      // nudge the recommended price for raise/invest rows
-      const priceB = row.querySelector(".wb-row__price b");
-      if (priceB && (action === "raise" || action === "invest")) {
-        const m = priceB.textContent.match(/₹(\d+)/);
-        if (m) {
-          let val = parseInt(m[1], 10);
-          const base = parseInt(row.dataset.base || String(val), 10);
-          row.dataset.base = String(base);
-          const delta = 1 + Math.floor(Math.random() * 3);
-          val = action === "raise" ? val + delta : val - delta;
-          // keep the drift within a believable band of the base price
-          val = Math.max(base - 12, Math.min(base + 12, val));
-          priceB.textContent = "₹" + val;
-        }
-      }
-
       setTimeout(function () { row.classList.remove("is-updating"); }, 1300);
 
       idx = (idx + 1) % rows.length;
@@ -326,8 +280,6 @@
     const mouse = { x: -9999, y: -9999 };
     const GREEN = "21,160,90";
     const GREEN_DEEP = "14,123,67";
-    const spotEl = document.getElementById("heroSpot");
-    let spotX = null, spotY = null;
 
     function resize() {
       w = canvas.clientWidth || canvas.offsetWidth;
@@ -405,13 +357,6 @@
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3.2, 0, Math.PI * 2); ctx.fill();
       }
 
-      // cursor-following spotlight glow (lerped for a soft trail)
-      if (spotEl && mouse.x > -999) {
-        spotX = spotX === null ? mouse.x : spotX + (mouse.x - spotX) * 0.08;
-        spotY = spotY === null ? mouse.y : spotY + (mouse.y - spotY) * 0.08;
-        spotEl.style.setProperty("--hx", spotX.toFixed(1) + "px");
-        spotEl.style.setProperty("--hy", spotY.toFixed(1) + "px");
-      }
       raf = requestAnimationFrame(draw);
     }
 
