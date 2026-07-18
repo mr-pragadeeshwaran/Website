@@ -25,6 +25,7 @@
   /* ---------- nav refs ---------- */
   const nav = document.getElementById("nav");
   const progressBar = document.getElementById("progressBar");
+  const spineFill = document.getElementById("spineFill");
 
   /* ---------- counter animation (supports decimals) ---------- */
   function finalText(el) {
@@ -149,9 +150,11 @@
     requestAnimationFrame(function () {
       const y = window.scrollY || window.pageYOffset || 0;
       if (nav) nav.classList.toggle("is-scrolled", y > 24);
-      if (progressBar) {
+      if (progressBar || spineFill) {
         const h = document.documentElement.scrollHeight - window.innerHeight;
-        progressBar.style.width = (h > 0 ? (y / h) * 100 : 0).toFixed(2) + "%";
+        const pct = (h > 0 ? (y / h) * 100 : 0).toFixed(2) + "%";
+        if (progressBar) progressBar.style.width = pct;
+        if (spineFill) spineFill.style.height = pct;
       }
       // scrollspy
       let current = null;
@@ -292,8 +295,8 @@
     let raf = null;
     let running = false;
     const mouse = { x: -9999, y: -9999 };
-    const GREEN = "21,160,90";
-    const GREEN_DEEP = "14,123,67";
+    const GREEN = "53,224,161";      /* signal */
+    const GREEN_DEEP = "22,181,127"; /* signal-2 */
 
     function resize() {
       w = canvas.clientWidth || canvas.offsetWidth;
@@ -347,9 +350,12 @@
       if (denom !== 0) {
         const slope = (n * sxy - sx * sy) / denom;
         const intercept = (sy - slope * sx) / n;
-        ctx.strokeStyle = "rgba(" + GREEN_DEEP + ",0.5)";
-        ctx.lineWidth = 2; ctx.setLineDash([7, 7]);
+        ctx.save();
+        ctx.strokeStyle = "rgba(53,224,161,0.72)";
+        ctx.lineWidth = 2; ctx.setLineDash([9, 6]);
+        ctx.shadowColor = "rgba(53,224,161,0.35)"; ctx.shadowBlur = 7;
         ctx.beginPath(); ctx.moveTo(0, intercept); ctx.lineTo(w, slope * w + intercept); ctx.stroke();
+        ctx.restore();
         ctx.setLineDash([]);
       }
 

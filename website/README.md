@@ -28,13 +28,13 @@ Plain **HTML + CSS + vanilla JavaScript** — no build step, no dependencies.
 | Path | Purpose |
 |------|---------|
 | `index.html` | Page structure & content |
-| `css/styles.css` | Design system (warm-paper light theme, firm deep-green accent, dark feature panels) |
+| `css/styles.css` | Design system ("The Instrument": dark warm near-black canvas, faint plotting grid, one phosphor-green signal) |
 | `js/script.js`  | Scroll reveals, animated counters, interactive hero canvas |
 | `assets/og.png` | Social share (Open Graph) image |
 | `assets/partners/` | Blinkit, Zepto, Instamart logos shown on the page |
 
-Fonts: General Sans (headings + body), Instrument Serif (rationed accents — hero word,
-pull quote, contact title only), JetBrains Mono (data labels) — loaded via CDN.
+Fonts: Space Grotesk (display headings), Inter (body), JetBrains Mono (labels, eyebrows,
+data readouts) — loaded via Google Fonts.
 
 ## Deployment
 
@@ -53,7 +53,8 @@ python -m http.server 4173
 
 ## Notes
 
-- The design is **light-first** with two near-black "panel" sections used for contrast.
+- The design ("The Instrument") is **dark**: a warm near-black canvas with a faint plotting
+  grid, one phosphor-green signal accent, and elevated panels (flagship + contact) for rhythm.
 - Engagement pricing is intentionally not shown on the site — it's discussed on a call.
 - Accessibility is a first-class concern: full `prefers-reduced-motion` handling, a
   keyboard skip link, visible focus states, and a JS-failure safety net that reveals all
