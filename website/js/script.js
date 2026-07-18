@@ -25,6 +25,7 @@
   /* ---------- nav refs ---------- */
   const nav = document.getElementById("nav");
   const progressBar = document.getElementById("progressBar");
+  const spineFill = document.getElementById("spineFill");
 
   /* ---------- counter animation (supports decimals) ---------- */
   function finalText(el) {
@@ -149,9 +150,11 @@
     requestAnimationFrame(function () {
       const y = window.scrollY || window.pageYOffset || 0;
       if (nav) nav.classList.toggle("is-scrolled", y > 24);
-      if (progressBar) {
+      if (progressBar || spineFill) {
         const h = document.documentElement.scrollHeight - window.innerHeight;
-        progressBar.style.width = (h > 0 ? (y / h) * 100 : 0).toFixed(2) + "%";
+        const pct = (h > 0 ? (y / h) * 100 : 0).toFixed(2) + "%";
+        if (progressBar) progressBar.style.width = pct;
+        if (spineFill) spineFill.style.height = pct;
       }
       // scrollspy
       let current = null;
@@ -348,9 +351,9 @@
         const slope = (n * sxy - sx * sy) / denom;
         const intercept = (sy - slope * sx) / n;
         ctx.save();
-        ctx.strokeStyle = "rgba(53,224,161,0.9)";
-        ctx.lineWidth = 2.2; ctx.setLineDash([9, 6]);
-        ctx.shadowColor = "rgba(53,224,161,0.55)"; ctx.shadowBlur = 12;
+        ctx.strokeStyle = "rgba(53,224,161,0.72)";
+        ctx.lineWidth = 2; ctx.setLineDash([9, 6]);
+        ctx.shadowColor = "rgba(53,224,161,0.35)"; ctx.shadowBlur = 7;
         ctx.beginPath(); ctx.moveTo(0, intercept); ctx.lineTo(w, slope * w + intercept); ctx.stroke();
         ctx.restore();
         ctx.setLineDash([]);
@@ -370,8 +373,8 @@
         const color = p.accent ? GREEN_DEEP : GREEN;
         ctx.fillStyle = "rgba(" + color + ",0.9)";
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = "rgba(" + color + ",0.14)";
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3.6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "rgba(" + color + ",0.10)";
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3.2, 0, Math.PI * 2); ctx.fill();
       }
 
       raf = requestAnimationFrame(draw);

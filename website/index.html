@@ -51,7 +51,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="css/styles.css?v=3" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
   <script>
     document.documentElement.className += " js";
     /* curtain decision before first paint: play once per session */
@@ -85,6 +85,9 @@
 
   <!-- ===== Scroll progress bar ===== -->
   <div class="scroll-progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <!-- ===== Left plot-axis spine (draws with scroll) ===== -->
+  <div class="spine" aria-hidden="true"><span class="spine__fill" id="spineFill"></span></div>
 
   <a class="skip-link" href="#top">Skip to content</a>
 
@@ -512,21 +515,25 @@
             <span class="proof-card__big"><span class="num" data-count="1.76" data-decimals="2" data-prefix="₹" data-suffix="L">₹0L</span> <em>/ month</em></span>
             <h3>Waste concentrated in a handful of SKUs</h3>
             <p>Measured, not estimated — every rupee tied to a product and a city.</p>
+            <div class="gauge" aria-hidden="true"><i>evidence · strong</i><span style="--lvl:92%"></span></div>
           </article>
           <article class="proof-card reveal" data-reveal data-delay="1">
             <span class="proof-card__big"><span class="num" data-count="87" data-suffix="%">0%</span></span>
             <h3>Of sales response explained on unseen data</h3>
             <p>Labelled “moderate” by the system itself — never rounded up.</p>
+            <div class="gauge" aria-hidden="true"><i>fit · out-of-sample</i><span style="--lvl:87%"></span></div>
           </article>
           <article class="proof-card reveal" data-reveal data-delay="2">
             <span class="proof-card__big">Cautious</span>
             <h3>Flagged −13.8% downside; held-out weeks came in at −8.8%</h3>
             <p>Built to err toward caution when evidence is thin — it would rather over-warn than surprise you.</p>
+            <div class="gauge gauge--mid" aria-hidden="true"><i>confidence · cautious</i><span style="--lvl:62%"></span></div>
           </article>
           <article class="proof-card reveal" data-reveal data-delay="3">
             <span class="proof-card__big">“Not enough data”</span>
             <h3>Is an answer it's allowed to give</h3>
             <p>Weak evidence gets flagged for testing — not guessed at.</p>
+            <div class="gauge gauge--low" aria-hidden="true"><i>evidence · insufficient</i><span style="--lvl:15%"></span></div>
           </article>
         </div>
       </div>
@@ -928,6 +935,6 @@
     </div>
   </footer>
 
-  <script src="js/script.js?v=3"></script>
+  <script src="js/script.js?v=4"></script>
 </body>
 </html>
