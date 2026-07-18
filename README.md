@@ -37,4 +37,7 @@ Set repo **Settings -> Pages -> Source -> "GitHub Actions"** once; then pushes t
 
 - The design is **light-first** with two near-black "panel" sections for contrast.
 - Engagement pricing is intentionally not shown on the site — discussed on a call.
-- All the rupee figures on the page are illustrative *findings*, not prices.
+- **No fabricated social proof.** StatIQ Lab is a brand-new practice (no clients, no
+  testimonials). Every `₹`/`%` figure belongs to ONE clearly-labeled **illustrative
+  worked example**, not a real client result — the site makes its own craftsmanship and
+  honesty the proof. See `website/README.md` before touching any number or adding proof.

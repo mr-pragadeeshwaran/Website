@@ -129,13 +129,13 @@
   /* ---------- scroll parallax (writes --py consumed by CSS) ---------- */
   const pxEls = prefersReduced
     ? []
-    : Array.prototype.slice.call(document.querySelectorAll("[data-parallax], [data-parallax-var]"));
+    : Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
   function updateParallax() {
     if (!pxEls.length) return;
     const vh = window.innerHeight || 800;
     for (let i = 0; i < pxEls.length; i++) {
       const el = pxEls[i];
-      const sp = parseFloat(el.getAttribute("data-parallax") || el.getAttribute("data-parallax-var")) || 0;
+      const sp = parseFloat(el.getAttribute("data-parallax")) || 0;
       const r = el.getBoundingClientRect();
       if (r.bottom < -200 || r.top > vh + 200) continue;
       el.style.setProperty("--py", ((r.top + r.height / 2 - vh / 2) * sp).toFixed(1));
@@ -185,6 +185,14 @@
         toggle.setAttribute("aria-expanded", "false");
       });
     });
+    // Escape closes the menu and returns focus to the toggle
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
+    });
   }
 
   /* ---------- smooth-scroll with fixed-nav offset ---------- */
@@ -195,7 +203,7 @@
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - 70;
+      const top = target.getBoundingClientRect().top + window.scrollY - 84;
       window.scrollTo({ top: top, behavior: prefersReduced ? "auto" : "smooth" });
     });
   });
@@ -233,6 +241,8 @@
     let idx = 0;
     let visible = false;
     let timer = null;
+    let cyclesDone = 0;
+    let capped = false; // WCAG 2.2.2: the auto-updating counter settles after a couple of passes
 
     function tickRow() {
       const row = rows[idx];
@@ -240,14 +250,18 @@
       setTimeout(function () { row.classList.remove("is-updating"); }, 1300);
 
       idx = (idx + 1) % rows.length;
-      if (idx === 0 && weekEl) {
-        week = week >= 52 ? 1 : week + 1;
-        weekEl.textContent = "WEEK " + week;
+      if (idx === 0) {
+        if (weekEl) {
+          week = week >= 52 ? 1 : week + 1;
+          weekEl.textContent = "WEEK " + week;
+        }
+        cyclesDone += 1;
+        if (cyclesDone >= 2) { capped = true; stopCycle(); }
       }
     }
 
     function startCycle() {
-      if (timer || !visible) return;
+      if (timer || !visible || capped) return;
       timer = setInterval(tickRow, 3000);
     }
     function stopCycle() {
@@ -270,7 +284,7 @@
 
   /* ---------- hero canvas: drifting correlation cloud + fitted line ---------- */
   const canvas = document.getElementById("heroCanvas");
-  if (canvas && !prefersReduced) {
+  if (canvas && !prefersReduced && finePointer) {
     const ctx = canvas.getContext("2d");
     let w = 0, h = 0;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
