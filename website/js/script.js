@@ -292,8 +292,8 @@
     let raf = null;
     let running = false;
     const mouse = { x: -9999, y: -9999 };
-    const GREEN = "21,160,90";
-    const GREEN_DEEP = "14,123,67";
+    const GREEN = "53,224,161";      /* signal */
+    const GREEN_DEEP = "22,181,127"; /* signal-2 */
 
     function resize() {
       w = canvas.clientWidth || canvas.offsetWidth;
@@ -347,9 +347,12 @@
       if (denom !== 0) {
         const slope = (n * sxy - sx * sy) / denom;
         const intercept = (sy - slope * sx) / n;
-        ctx.strokeStyle = "rgba(" + GREEN_DEEP + ",0.5)";
-        ctx.lineWidth = 2; ctx.setLineDash([7, 7]);
+        ctx.save();
+        ctx.strokeStyle = "rgba(53,224,161,0.9)";
+        ctx.lineWidth = 2.2; ctx.setLineDash([9, 6]);
+        ctx.shadowColor = "rgba(53,224,161,0.55)"; ctx.shadowBlur = 12;
         ctx.beginPath(); ctx.moveTo(0, intercept); ctx.lineTo(w, slope * w + intercept); ctx.stroke();
+        ctx.restore();
         ctx.setLineDash([]);
       }
 
@@ -367,8 +370,8 @@
         const color = p.accent ? GREEN_DEEP : GREEN;
         ctx.fillStyle = "rgba(" + color + ",0.9)";
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = "rgba(" + color + ",0.10)";
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3.2, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "rgba(" + color + ",0.14)";
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3.6, 0, Math.PI * 2); ctx.fill();
       }
 
       raf = requestAnimationFrame(draw);
